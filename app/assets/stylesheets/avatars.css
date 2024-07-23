@@ -1,0 +1,16 @@
+.avatar {
+  --avatar-border-radius: 50%;
+
+  aspect-ratio: 1;
+  block-size: var(--avatar-size, 2.65em);
+  border-radius: var(--avatar-border-radius);
+  display: grid;
+  inline-size: var(--avatar-size, 2.65em);
+  margin: 0;
+  place-items: center;
+
+  > * {
+    aspect-ratio: 1;
+    grid-area: 1/1;
+  }
+}
