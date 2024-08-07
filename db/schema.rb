@@ -17,11 +17,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_07_24_163519) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_splats", id: false, force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "splat_id", null: false
-  end
-
   create_table "categorizations", force: :cascade do |t|
     t.integer "splat_id", null: false
     t.integer "category_id", null: false
