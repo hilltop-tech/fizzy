@@ -39,7 +39,7 @@ class BucketsController < ApplicationController
     end
 
     def bucket_params
-      params.require(:bucket).permit(:name)
+      params.expect(bucket: [ :name ])
     end
 
     def grantees

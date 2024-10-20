@@ -18,6 +18,6 @@ class FirstRunsController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email_address, :password)
+      params.expect(user: [ :name, :email_address, :password ])
     end
 end

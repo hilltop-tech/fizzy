@@ -8,6 +8,6 @@ class AssignmentsController < ApplicationController
 
   private
     def find_assignee
-      @bucket.users.active.find(params[:assignee_id])
+      @bucket.users.active.find(params.expect(:assignee_id))
     end
 end

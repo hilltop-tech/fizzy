@@ -23,7 +23,7 @@ class TagsController < ApplicationController
 
   private
     def tag_params
-      params.require(:tag).permit(:title)
+      params.expect(tag: [ :title ])
     end
 
     def set_bubble
