@@ -136,7 +136,7 @@
 
   &.bubble__assignee {
     aspect-ratio: 1;
-    font-size: 4.5  cqi;
+    font-size: 4.5cqi;
     inset: -2cqi auto auto 26cqi;
     padding: 0.4em;
 
@@ -250,60 +250,12 @@
   }
 }
 
-.bubble__color-picker {
-  border: 0;
-  display: none;
-  margin-block-start: -6.5em;
+.bubble__container {
+  inline-size: min(67ch, 75vw);
+  max-inline-size: 100vw;
 
-  &[open] {
-    display: block;
-  }
-
-  .bubble__color-picker__color {
-    --btn-size: 2em;
-    --rotation: 0deg;
-
-    block-size: 4.33em;
-    inset: 0 auto auto 0;
-    position: absolute;
-    transform: rotate(var(--rotation));
-    transform-origin: bottom center;
-
-    .btn {
-      transform: rotate(calc(var(--rotation) * -1));
-    }
-
-    &:nth-of-type(2) {
-      --rotation: 40deg;
-    }
-
-    &:nth-of-type(3) {
-      --rotation: 80deg;
-    }
-
-    &:nth-of-type(4) {
-      --rotation: 120deg;
-    }
-
-    &:nth-of-type(5) {
-      --rotation: 160deg;
-    }
-
-    &:nth-of-type(6) {
-      --rotation: 200deg;
-    }
-
-    &:nth-of-type(7) {
-      --rotation: 240deg;
-    }
-
-    &:nth-of-type(8) {
-      --rotation: 280deg;
-    }
-
-    &:nth-of-type(9) {
-      --rotation: -40deg;
-    }
+  @media (max-width: 70ch) {
+    inline-size: min(67ch, 100vw);
   }
 }
 
@@ -347,7 +299,8 @@
 }
 
 .bubble__perma {
-  block-size: 65cqb;
+  block-size: 100%;
+  max-block-size: 65dvh;
   max-inline-size: 100%;
 }
 

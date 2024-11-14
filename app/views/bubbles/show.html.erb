@@ -7,15 +7,96 @@
       <span class="for-screen-reader">Back</span>
     <% end %>
 
-    <section class="flex flex-column align-end gap">
+    <span class="flex-item-justify-end">
       <%= render "bubbles/pop_toggle", bubble: @bubble %>
-      <%= turbo_frame_tag dom_id(@bubble, :stage_picker), src: new_bucket_bubble_stage_picker_path(@bubble.bucket, @bubble) %>
-    </section>
+    </span>
   </nav>
 <% end %>
 
-<div class="bubble__perma flex justify-center center margin-block-end-double">
-  <%= render "bubbles/bubble", bubble: @bubble %>
+<aside class="flex align-start justify-end" style="--bubble-color: <%= @bubble.color %>">
+  <div class="flex flex-column gap-half">
+    <%= render "bubbles/color", bubble: @bubble %>
+
+    <%= form_with model: @bubble, url: bucket_bubble_path(@bubble.bucket, @bubble), data: { controller: "form" } do |form| %>
+      <label class="btn full-width justify-start borderless">
+        <%= image_tag "calendar-add.svg", aria: { hidden: true }, size: 24 %>
+        <span><%= @bubble.due_on.present? ? "Change" : "Add a" %> due date</span>
+        <%= form.date_field :due_on, class: "input input--hidden", data: { action: "change->form#submit click->form#showPicker" } %>
+      </label>
+    <% end %>
+
+    <%= form_with url: bucket_bubble_assignments_path(@bubble.bucket, @bubble), data: { controller: "form" } do |form| %>
+      <label class="btn full-width justify-start borderless">
+        <%= image_tag "person.svg", aria: { hidden: true }, size: 24 %>
+        <span>Assign to someone</span>
+        <%= form.collection_select :assignee_id, @bubble.bucket.users.active, :id, :name, { prompt: "Assign to…", selected: @bubble.assignees.pluck(:id) },
+              class: "input input--hidden txt-medium",
+              data: { action: "change->form#submit click->form#showPicker" } %>
+      </label>
+    <% end %>
+
+    <div class="position-relative" data-controller="dialog" data-action="keydown.esc->dialog#close">
+      <button class="btn full-width justify-start borderless" data-action="dialog#toggle">
+        <%= image_tag "tag.svg", aria: { hidden: true }, size: 24 %>
+        <span>Tag this</span>
+      </button>
+
+      <dialog class="tag-picker panel fill-white shadow gap-half align-center" data-dialog-target="dialog" data-action="keydown.esc->dialog#close click@document->dialog#closeOnClickOutside">
+        <%= image_tag "tag.svg", aria: { hidden: true }, size: 24 %>
+
+        <%= form_with model: Tag.new, url: bucket_bubble_tags_path(@bubble.bucket, @bubble), class: "min-width flex-item-grow", data: { turbo_frame: "_top" } do |form| %>
+          <%= form.text_field :title, class: "input", autofocus: "on", list: "tags-list" %>
+          <%= form.submit "Create Tag", hidden: true %>
+
+          <datalist id="tags-list">
+            <%= Current.account.tags.each do |tag| %>
+              <option value="<%= tag.title %>"></option>
+            <% end %>
+          </datalist>
+        <% end %>
+
+        <form method="dialog">
+          <button class="btn txt-small" title="Close (esc)">
+            <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Close</span>
+          </button>
+        </form>
+      </dialog>
+    </div>
+
+    <% if @bubble.image.attached? %>
+      <%= button_to bucket_bubble_image_path(@bubble.bucket, @bubble), method: :delete, class: "btn full-width justify-start borderless" do %>
+        <%= image_tag "picture-add.svg", aria: { hidden: true }, size: 24 %>
+        <span>Clear background image</span>
+      <% end %>
+    <% else %>
+      <%= form_with model: @bubble, url: bucket_bubble_path(@bubble.bucket, @bubble), data: { controller: "form" } do |form| %>
+        <label class="btn full-width justify-start borderless">
+          <%= image_tag "picture-add.svg", aria: { hidden: true }, size: 24 %>
+          <span>Add background image</span>
+          <%= form.file_field :image, class: "input",
+                accept: "image/png, image/jpeg, image/jpg, image/webp",
+                data: { action: "upload-preview#previewImage form#submit", upload_preview_target: "input" },
+                hidden: true %>
+        </label>
+      <% end %>
+    <% end %>
+
+    <%= button_to bucket_bubble_boosts_path(@bubble.bucket, @bubble), class: "btn full-width justify-start borderless", data: { turbo_frame: dom_id(@bubble, :boosts) } do %>
+      <%= image_tag "thumb-up.svg", aria: { hidden: true }, size: 24 %>
+      <span>Boost this</span>
+    <% end %>
+  </div>
+</aside>
+
+<div class="bubble__container">
+  <div class="bubble__perma flex justify-center center margin-block-end-double">
+    <%= render "bubbles/bubble", bubble: @bubble %>
+  </div>
+
+  <%= render "bubbles/messages", bubble: @bubble %>
 </div>
 
-<%= render "bubbles/messages", bubble: @bubble %>
+<div class="flex align-start justify-start">
+  <%= turbo_frame_tag dom_id(@bubble, :stage_picker), src: new_bucket_bubble_stage_picker_path(@bubble.bucket, @bubble) %>
+</div>

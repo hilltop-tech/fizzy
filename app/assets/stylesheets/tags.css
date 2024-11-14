@@ -1,0 +1,21 @@
+.tag-picker {
+  --panel-border-radius: 2em;
+  --panel-padding: 0.5em 0.7em;
+  --panel-size: max-content;
+
+  inline-size: auto !important;
+  inset: 0 auto auto 0;
+  max-inline-size: var(--panel-size) !important;
+  position: absolute;
+  z-index: 2;
+
+  &[open] {
+    display: flex;
+  }
+
+  .input {
+    --input-padding: 0.2em 0.5em;
+
+    inline-size: 18ch;
+  }
+}

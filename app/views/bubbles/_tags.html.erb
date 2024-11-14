@@ -1,11 +1,3 @@
-<% bubble.tags.each do |tag| %>
+<% bubble.tags.last(3).each do |tag| %>
   <%= link_to tag.hashtag, bubbles_path(bucket_id: bubble.bucket, tag_ids: tag), class: "bubble__bubble bubble__meta bubble__tag" %>
-<% end %>
-
-<% if bubble.tags.size < 3 %>
-  <span class="bubble__bubble bubble__meta bubble__tag">
-    <%= turbo_frame_tag :new_tag do %>
-      <%= link_to "#", new_bucket_bubble_tag_path(bubble.bucket, bubble), class: "bubble__tag--new" %>
-    <% end %>
-  </span>
 <% end %>
