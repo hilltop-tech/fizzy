@@ -7,6 +7,7 @@ gemfile do
   gem "base64"
   gem "bcrypt_pbkdf"
   gem "ed25519"
+  gem "logger"
   gem "sshkit"
 end
 
