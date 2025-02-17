@@ -5,6 +5,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :kevin
 
     events(:layout_assignment_jz).update!(created_at: Time.current.beginning_of_day + 8.hours)
+    travel_to Time.current.beginning_of_day + 15.hours
   end
 
   test "index" do
