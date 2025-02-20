@@ -100,26 +100,11 @@
   }
 
   /* With radios and checkboxes */
-  &:has(input[type=radio]) {
-    :is(input[type=radio]) {
-      appearance: none;
-      block-size: calc(var(--btn-size) - var(--outline-size));
-      border-radius: var(--btn-border-radius);
-      cursor: pointer;
-      display: flex;
-      inline-size: calc(var(--btn-size) - var(--outline-size));
-      margin: 0;
-      padding: 0;
-    }
-
-    img.checked {
-      display: none;
-    }
-  }
-
+  &:has(input[type=radio]),
   &:has(input[type=checkbox]) {
     position: relative;
 
+    :is(input[type=radio]),
     :is(input[type=checkbox]) {
       appearance: none;
       border-radius: var(--btn-border-radius);
