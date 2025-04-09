@@ -26,7 +26,7 @@
       inline-size: var(--tray-size);
       outline: 0;
       pointer-events: none;
-      position: absolute;
+      position: absolute !important; /* tmp fix; ideally should remove the position-relative class from tray__item */
       scale: var(--scale);
       transform: translateY(var(--offset));
       transform-origin: center;

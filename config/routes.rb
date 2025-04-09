@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "events#index"
+  resource :first_run
 
   resource :account do
     scope module: :accounts do
@@ -8,12 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bubbles do
-    scope module: :bubbles do
+  resources :cards do
+    scope module: :cards do
       resource :engagement
       resource :image
       resource :pin
-      resource :pop
+      resource :closure
       resource :publish
       resource :reading
       resource :recover
@@ -40,14 +40,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :buckets do
-    scope module: :buckets do
+  resources :collections do
+    scope module: :collections do
       resource :subscriptions
       resource :workflow, only: :update
       resource :involvement
     end
 
-    resources :bubbles do
+    resources :cards do
       resources :comments do
         resources :reactions, module: :comments
       end
@@ -59,8 +59,11 @@ Rails.application.routes.draw do
     resources :days
   end
 
+  resources :workflows do
+    resources :stages, module: :workflows
+  end
+
   resources :filters
-  resource :first_run
   resources :qr_codes
 
   namespace :my do
@@ -73,32 +76,31 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :uploads, only: :create
-  get "/u/*slug" => "uploads#show", as: :upload
-
   resources :users do
     scope module: :users do
       resource :avatar
     end
   end
 
-  resources :workflows do
-    resources :stages, module: :workflows
-  end
-
   get "join/:join_code", to: "users#new", as: :join
   post "join/:join_code", to: "users#create"
-  get "up", to: "rails/health#show", as: :rails_health_check
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  resource :terminal, only: [ :show, :edit ]
-
-  resolve "Bubble" do |bubble, options|
-    route_for :bucket_bubble, bubble.bucket, bubble, options
+  resolve "Card" do |card, options|
+    route_for :collection_card, card.collection, card, options
   end
 
   resolve "Comment" do |comment, options|
     options[:anchor] = ActionView::RecordIdentifier.dom_id(comment)
-    route_for :bucket_bubble, comment.bubble.bucket, comment.bubble, options
+    route_for :collection_card, comment.card.collection, comment.card, options
   end
+
+  get "up", to: "rails/health#show", as: :rails_health_check
+  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
+  resources :uploads, only: :create
+  get "/u/*slug" => "uploads#show", as: :upload
+
+  resource :terminal, only: [ :show, :edit ]
+
+  root "events#index"
 end

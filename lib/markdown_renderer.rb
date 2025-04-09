@@ -68,7 +68,7 @@ class MarkdownRenderer < Redcarpet::Render::HTML
     end
 
     def video_url?(url)
-      File.extname(url).downcase.match?(/\.(mp4|webm|ogg)/)
+      File.extname(url).downcase.match?(/\.(mp4|webm|ogg|mov|avi|mkv)/)
     end
 
     def video_tag(url, title)

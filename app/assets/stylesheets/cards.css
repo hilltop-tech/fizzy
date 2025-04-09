@@ -78,8 +78,8 @@
     --border-size: 0;
 
     aspect-ratio: 2/0.95;
-    background-color: color-mix(in srgb, var(--bubble-color) 4%, var(--color-bg));
-    color: color-mix(in srgb, var(--bubble-color) 40%, var(--color-ink));
+    background-color: color-mix(in srgb, var(--card-color) 4%, var(--color-bg));
+    color: color-mix(in srgb, var(--card-color) 40%, var(--color-ink));
     max-inline-size: 75ch;
     z-index: 1;
 
@@ -112,9 +112,12 @@
   }
 
   .card__actions-container {
+    --border-radius: 1em;
+
     background-color: var(--color-bg);
-    margin-block: calc(var(--block-space) * -1) var(--block-space);
-    padding: var(--block-space) var(--inline-space-double);
+    color: color-mix(in srgb, var(--card-color) 40%, var(--color-ink));
+    margin-block: calc(var(--block-space) * -1.66) calc(var(--block-space) * 1.66);
+    padding: calc(var(--block-space) * 0.66) calc(var(--inline-space) * 1.5);
     position: relative;
     z-index: 0;
 
@@ -123,24 +126,25 @@
     }
 
     .btn:not(.popup__item, .btn--plain) {
-      --btn-background: var(--bubble-color);
+      --btn-background: var(--card-color);
       --btn-color: var(--color-ink-reversed);
     }
 
     .btn--plain {
-      --btn-color: var(--bubble-color);
+      --btn-color: var(--card-color);
 
       text-decoration: underline;
     }
 
-    .bubble__pop-message {
-      color: var(--bubble-color);
+    .card__closure-message {
+      color: var(--card-color);
     }
   }
 
   .card__actions-container--top {
-    margin: var(--block-space-half) auto calc(var(--block-space) * -2);
-    padding: var(--block-space) 3ch;
+    min-inline-size: 36ch;
+    margin: calc(var(--block-space) * 1) auto calc(var(--block-space) * -0.33);
+    padding: 0.5em 0.75em;
 
     #header:has(&) {
       position: relative;
@@ -148,10 +152,18 @@
     }
 
     .switch__input:checked + .switch__btn {
-      background-color: var(--bubble-color) !important;
+      background-color: var(--card-color) !important;
+    }
+
+    strong {
+      flex: 1 0 42%;
+      text-align: end;
+
+      &:last-of-type {
+        text-align: start;
+      }
     }
   }
-
 
   .cards .card__assignees:not(:has(.avatar)) {
     .txt-uppercase {
@@ -191,14 +203,14 @@
     padding-block: var(--block-space);
   }
 
-  .card__bucket {
-    background-color: var(--bubble-color);
+  .card__collection {
+    background-color: var(--card-color);
     font-weight: 800;
     letter-spacing: 0.5ch;
     padding: var(--block-space-half) var(--inline-space-double);
   }
 
-  .card-bucket__filter {
+  .card-collection__filter {
     > button {
       --hover-size: 0;
     }
@@ -232,11 +244,11 @@
     --padding-inline: calc(var(--block-space-double) + var(--block-space));
     --padding-block: var(--block-space-double) calc(var(--block-space-double) + var(--block-space-half));
 
-    background-color: color-mix(in srgb, var(--bubble-color) 33%, var(--color-bg));
+    background-color: color-mix(in srgb, var(--card-color) 33%, var(--color-bg));
     border-radius: 0.2em;
     display: inline-flex;
-    padding-block: var(--padding-block);
-    padding-inline: var(--padding-inline);
+    margin-block: calc(var(--block-space) * -1) calc(var(--block-space) * -0.33);
+    padding: var(--padding-block) var(--padding-inline);
 
     &:has(.card__star-input:checked) {
       .card {
@@ -377,7 +389,7 @@
   }
 
   .card__meta {
-    --border-color: var(--bubble-color);
+    --border-color: var(--card-color);
     --border-size: 1px;
     --row-gap: 0.25em;
 
@@ -393,7 +405,7 @@
   }
 
   .card__move-button {
-    --btn-background: color-mix(in srgb, var(--bubble-color) 40%, var(--color-ink));
+    --btn-background: color-mix(in srgb, var(--card-color) 40%, var(--color-ink));
 
     margin-block-start: calc(var(--block-space) * 1.2);
     margin-inline-end: calc(var(--inline-space) * -4);
@@ -405,12 +417,12 @@
   }
 
   .card__tag {
-    color: var(--bubble-color);
+    color: var(--card-color);
     font-weight: 700;
   }
 
   .card__tags {
-    color: var(--bubble-color);
+    color: var(--card-color);
   }
 
   .card__title {
@@ -456,9 +468,11 @@
   }
 
   .input.boost__input {
+    --hover-size: 0;
     --input-border-radius: 0;
     --input-border-size: 0;
     --input-padding: 0;
+    --outline-size: 0;
 
     color: inherit;
     font-size: inherit;
@@ -466,17 +480,28 @@
     inline-size: min-content;
     max-inline-size: 3ch;
     min-inline-size: 1ch;
+    outline: none;
 
     @supports (field-sizing: content) {
       field-sizing: content;
       max-inline-size: unset;
     }
+
+    &:focus {
+      background-color: var(--color-highlight);
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
-  .card__popped {
+  .card__closed {
     align-items: center;
     aspect-ratio: 7/4;
-    border: var(--block-space-half) solid var(--bubble-color);
+    border: var(--block-space-half) solid var(--card-color);
     position: absolute;
     inset: auto var(--block-space) var(--block-space-double) auto;
     justify-content: space-between;
@@ -485,18 +510,18 @@
     z-index: -1;
   }
 
-  .card__popped-by {
+  .card__closed-by {
     border-block-end: 1px dashed currentcolor;
   }
 
-  .card__popped-title {
+  .card__closed-title {
     color: var(--color-ink-reversed);
     font-size: var(--text-rel-large);
     font-weight: 900;
     text-shadow:
-     -2px -2px 0 var(--bubble-color),
-      2px -2px 0 var(--bubble-color),
-     -2px 2px 0 var(--bubble-color),
-      2px 2px 0 var(--bubble-color);
+     -2px -2px 0 var(--card-color),
+      2px -2px 0 var(--card-color),
+     -2px 2px 0 var(--card-color),
+      2px 2px 0 var(--card-color);
   }
 }
