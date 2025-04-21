@@ -7,8 +7,6 @@ class Collection < ApplicationRecord
   has_many :cards, dependent: :destroy
   has_many :tags, -> { distinct }, through: :cards
 
-  validates_presence_of :name
-
   after_save :update_cards_workflow, if: :saved_change_to_workflow_id?
 
   scope :alphabetically, -> { order("lower(name)") }
