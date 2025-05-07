@@ -25,6 +25,10 @@
       display: none;
     }
 
+    .card__meta-grid {
+      margin-inline-start: 0;
+    }
+    
     .card {
       --block-space: 1em;
       --block-space-half: 0.5em;

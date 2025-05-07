@@ -153,7 +153,6 @@
   --color-selected-dark: oklch(var(--lch-blue-light));
   --color-highlight: oklch(var(--lch-yellow-lighter));
   --color-marker: oklch(var(--lch-red-medium));
-  --color-container: oklch(var(--lch-aqua-light));
   --color-terminal-bg: oklch(var(--lch-blue-darkest));
   --color-terminal-text: oklch(var(--lch-green-medium));
 
@@ -260,8 +259,6 @@
     --lch-pink-light: 40% 0.085 344;
     --lch-pink-lighter: 30% 0.03 346;
     --lch-pink-lightest: 25% 0.011 348;
-
-    --color-container: oklch(var(--lch-aqua-lighter));
 
     --shadow: 0 0 0 1px oklch(var(--lch-black) / 0.42),
               0 .2em 1.6em -0.8em oklch(var(--lch-black) / 0.6),

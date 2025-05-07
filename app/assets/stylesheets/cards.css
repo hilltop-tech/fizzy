@@ -212,6 +212,7 @@
   .card__meta-grid {
     display: grid;
     grid-template-columns: auto auto;
+    margin-inline-start: var(--inline-space);
   }
 
   .card__meta-item {
