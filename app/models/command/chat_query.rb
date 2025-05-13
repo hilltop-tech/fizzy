@@ -71,6 +71,10 @@ class Command::ChatQuery < Command
           - If the request requires acting on cards, add the sequence of commands that satisfy those. You can combine
             all of them except /search and /insight, which have an special consideration.
 
+       ## How to filter cards
+
+       - Find cards closed by someone with: (1) /search with indexed_by=closed and an additional "/insight closed by [name]".
+
        ## JSON format
 
         Each command will be a JSON object like. All the commands JSON objects a "command" key with the command.
@@ -93,8 +97,8 @@ class Command::ChatQuery < Command
         * When emitting search commands, if searching for terms, remove generic ones.
         * The response can't contain more than one /search command.
         * The response can't contain more than one /insight command.
-        * An unassigned card is a card without assignees. It has nothing to do with closed cards. A closed
-          card can be unassigned or not.
+        * An unassigned card is a card without assignees.
+        * An unassigned card can be closed or not. "unassigned" and "closed" are different unrelated concepts.
         * Only use assignment_status asking for unassigned cards. Never use in other circumstances.
         * There are similar commands to filter and act on cards (e.g: filter by assignee or assign 
           cards). Favor filtering/queries for commands like "cards assigned to someone".
