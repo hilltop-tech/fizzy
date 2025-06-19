@@ -120,11 +120,11 @@
   .popup__new {
     --btn-icon-size: 1em;
 
+    padding-inline-start: var(--inline-space-half);
+
     .icon {
       margin-inline-end: 0.5em;
     }
-
-    padding-inline-start: var(--inline-space-half);
   }
 
   .popup__title {
