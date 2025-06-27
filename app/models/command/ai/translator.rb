@@ -44,7 +44,7 @@ class Command::Ai::Translator
             "assignee_ids": string[],
             "assignment_status": "unassigned",
             "card_ids": number[],
-            "creator_id": string,
+            "creator_ids": string[],
             "collection_ids": string[],
             "tag_ids": string[],
             "creation": "today" | "yesterday" | "thisweek" | "thismonth" | "thisyear"
@@ -85,7 +85,7 @@ class Command::Ai::Translator
           * assignee_ids — array of assignee names
           * assignment_status — "unassigned". Important: ONLY when the user asks for unassigned cards.
           * card_ids — array of card IDs
-          * creator_id — creator’s name
+          * creator_id — array of creator’s names
           * collection_ids — array of collections
           * tag_ids — array of tag names
           * creation — relative range when the card was **created** (values listed above). Use it only
@@ -121,7 +121,7 @@ class Command::Ai::Translator
         * **Past-tense** “assigned to X”  → assignee_ids: ["X"]  (filter)
         * **Imperative** “assign to X”, “assign to me” → command /assign X  
           – Never use assignee_ids when the user gives an imperative assignment
-        * "Created by X"                  → creator_id: "X"
+        * "Created by X"                  → creator_id: ["X"]
         * "Stagnated or stalled cards"    → indexed_by: "stalled"
         * **Past-tense** “tagged with #X”, “#X cards” → tag_ids: ["X"]           (filter)
         * **Imperative** “tag …”, “tag with #X”, “add the #X tag”, “apply #X”
@@ -159,9 +159,11 @@ class Command::Ai::Translator
         * /visit [url or path] lets you visit arbitrary URLs and paths. E.g: /visit /cards/123
         * /stage [workflow stage]    → assign the card to the given stage
           – /stage never takes card IDs as arguments.
-        * “Move <ID(s)> to doing”        → context.card_ids = [IDs]; command /do
-        * “Move <ID(s)> to considering”  → context.card_ids = [IDs]; command /consider
         * “Move <ID(s)> to <Stage>”      → context.card_ids = [IDs]; command /stage <Stage>
+        * “Move <ID(s)> to doing”        → context.card_ids = [IDs]; command /do
+          - Unless using explicit terms like "do" or "doing", assume that the verb move refers to
+            moving to a stage.        
+        * “Move <ID(s)> to considering”  → context.card_ids = [IDs]; command /consider
         * /add_card → Create a new card with a blank title
         * /add_card [title] → Create a new card with the provided title
       
@@ -195,7 +197,7 @@ class Command::Ai::Translator
           – Do NOT include empty arrays (e.g., [], []).
           – Do NOT include empty strings ("") or default values that don't apply.
           – Do NOT emit unused or null context keys — omit them entirely.
-          – Example of bad output: {context: {terms: ["123"], card_ids: [], creator_id: ""}}
+          – Example of bad output: {context: {terms: ["123"], card_ids: [], creator_id: []}}
             ✅ Instead: {context: {terms: ["123"]}}
       
         * Similarly, only include commands if there are valid actions.
