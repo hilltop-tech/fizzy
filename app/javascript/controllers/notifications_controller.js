@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import { post } from "@rails/request.js"
+
 export default class extends Controller {
   static classes = [ "enabled" ]
   static targets = [ "subscribeButton", "explainer" ]
