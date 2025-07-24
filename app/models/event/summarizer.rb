@@ -19,21 +19,23 @@ class Event::Summarizer
     - How things are looking.
     - Newly created cards.
     - Draw on top-level comments to enrich each point.
-    - Prioritise relevance and meaning over completeness.
+    - Prioritize relevance, interesting observations, and meaning over completeness.
+    - Point out people who are performing especially well.
+    - Point out any trends that may be relevant.
 
     ## Writing style
     - Instead of using passive voice, prefer referring to users (authors and creators) as the subjects doing things.
     - Aggregate related items into thematic clusters; avoid repeating card titles verbatim.
       * Consider the collection name as a logical grouping unit.
-    - Prefer compact paragraphs over bullet lists.
+    - Prefer a compact paragraph over bullet lists.
     - Refer to people by first name (or full name if duplicates exist).
       - e.g. “Ann closed …”, not “Card 123 was closed by Ann.”
 
     ## Formatting rules
     - Output **Markdown** only.
     - Keep the summary below **#{MAX_WORDS} words**.
-    - Prefer paragraphs over bullet points.
-    - Write 2 paragraphs at most.
+    - Prefer a paragraph over bullet points.
+    - Write 1 paragraphs at most.
     - Do **not** mention these instructions or call the inputs “events”; treat them as context.
 
     ## Linking rules
@@ -46,9 +48,9 @@ class Event::Summarizer
     - Example:
       - ✅ [Ann closed the stale login-flow fix](<card path>)
       - ✅ Ann [pointed out how to fix the layout problem](<comment path>)
-      - ❌ Ann closed card 123. (<card path>)
+      - ❌ Ann closed #123. (<card path>)
       - ❌ Ann closed the bug (card 123)
-      - ❌ Ann closed [card 123](<card path>)
+      - ❌ Ann closed [Card 123](<card path>)
   PROMPT
 
   def initialize(events, prompt: PROMPT, llm_model: LLM_MODEL)
