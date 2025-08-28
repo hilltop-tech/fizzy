@@ -8,7 +8,7 @@ module HotkeysHelper
         platform.mac? ? "return" : "enter"
       else
         key
-      end
-    end.join()
+      end.capitalize
+    end.join("+").gsub(/⌘\+/, "⌘")
   end
 end

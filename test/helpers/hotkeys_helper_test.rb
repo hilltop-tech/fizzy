@@ -12,31 +12,31 @@ class HotkeysHelperTest < ActionView::TestCase
   test "linux modifier key" do
     emulate_linux
 
-    assert_equal "ctrlJ", hotkey_label([ "ctrl", "J" ])
+    assert_equal "Ctrl+J", hotkey_label([ "ctrl", "J" ])
   end
 
   test "mac enter" do
     emulate_mac
 
-    assert_equal "returnJ", hotkey_label([ "enter", "J" ])
+    assert_equal "Return+J", hotkey_label([ "enter", "J" ])
   end
 
   test "linux enter" do
     emulate_linux
 
-    assert_equal "enterJ", hotkey_label([ "enter", "J" ])
+    assert_equal "Enter+J", hotkey_label([ "enter", "J" ])
   end
 
   test "mac hyper" do
     emulate_mac
 
-    assert_equal "hyperJ", hotkey_label([ "hyper", "J" ])
+    assert_equal "Hyper+J", hotkey_label([ "hyper", "J" ])
   end
 
   test "linux hyper" do
     emulate_linux
 
-    assert_equal "hyperJ", hotkey_label([ "hyper", "J" ])
+    assert_equal "Hyper+J", hotkey_label([ "hyper", "J" ])
   end
 
   private
