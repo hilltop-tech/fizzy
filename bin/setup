@@ -7,9 +7,8 @@ system("gem install bundler --conservative")
 system("bundle config set --local auto_install true")
 system("bundle check") || system!("bundle install")
 
-if ENV.fetch("SAAS_EXTENSION", "") != ""
-  load File.expand_path("../gems/fizzy-saas/bin/setup", __dir__)
-end
+require_relative "../lib/bootstrap"
+load File.expand_path("../gems/fizzy-saas/bin/setup", __dir__) unless Bootstrap.local_authentication?
 
 puts "\n== Preparing database =="
 if ARGV.include?("--reset")

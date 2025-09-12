@@ -5,7 +5,7 @@ david:
   email_address: david@37signals.com
   password_digest: <%= digest %>
   role: member
-<% unless Rails.application.config.x.local_authentication %>
+<% if User.reflect_on_association :signal_user %>
   signal_user: 37s_fizzy_david
 <% end %>
 
@@ -14,7 +14,7 @@ jz:
   email_address: jz@37signals.com
   password_digest: <%= digest %>
   role: member
-<% unless Rails.application.config.x.local_authentication %>
+<% if User.reflect_on_association :signal_user %>
   signal_user: 37s_fizzy_jzimdars
 <% end %>
 
@@ -23,7 +23,7 @@ kevin:
   email_address: kevin@37signals.com
   password_digest: <%= digest %>
   role: admin
-<% unless Rails.application.config.x.local_authentication %>
+<% if User.reflect_on_association :signal_user %>
   signal_user: 37s_fizzy_kevin
 <% end %>
 

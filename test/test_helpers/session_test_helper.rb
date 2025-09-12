@@ -10,7 +10,7 @@ module SessionTestHelper
     if Rails.application.config.x.local_authentication
       post session_path, params: { email_address: user.email_address, password: "secret123456" }
     else
-      put session_launchpad_path, params: { sig: user.signal_user.perishable_signature }
+      saas_extension_sign_in_as(user)
     end
 
     cookie = cookies.get_cookie "session_token"

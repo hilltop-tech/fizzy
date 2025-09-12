@@ -61,7 +61,8 @@ group :test do
   gem "mocha"
 end
 
-if ENV.fetch("SAAS_EXTENSION", "") != ""
+require_relative "lib/bootstrap"
+unless Bootstrap.local_authentication?
   eval_gemfile "gems/fizzy-saas/Gemfile"
   gem "fizzy-saas", path: "gems/fizzy-saas"
 end

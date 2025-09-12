@@ -1,6 +1,6 @@
 37s:
   name: 37signals
   join_code: "ejpP-THlQ-Cc2f"
-<% unless Rails.application.config.x.local_authentication %>
+<% if Account.reflect_on_association :signal_account %>
   queenbee_id: <%= ActiveRecord::FixtureSet.identify :'37s_fizzy' %>
 <% end %>

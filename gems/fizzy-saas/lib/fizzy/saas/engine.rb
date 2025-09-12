@@ -3,12 +3,12 @@ require "signal_id"
 module Fizzy
   module Saas
     class Engine < ::Rails::Engine
-      isolate_namespace Fizzy::Saas
-
       # extend application models
       config.to_prepare do
-        User.include User::SignalUser
-        Account.include Account::SignalAccount
+        User.prepend User::SignalUser
+        Account.prepend Account::SignalAccount
+        LoginHelper.prepend LoginHelper::SignalLogin
+        SessionsController.include Sessions::SignalSessions
       end
 
       # moved from config/initializers/queenbee.rb

@@ -6,10 +6,6 @@ Rails.application.config.active_record_tenanted.default_tenant = ActiveRecord::F
 require "rails/test_help"
 require "webmock/minitest"
 require "vcr"
-unless Rails.application.config.x.local_authentication
-  require "signal_id/testing"
-  require "queenbee/testing/mocks"
-end
 require "mocha/minitest"
 
 WebMock.allow_net_connect!
@@ -49,9 +45,6 @@ module ActiveSupport
     fixtures :all
 
     include ActiveJob::TestHelper
-    unless Rails.application.config.x.local_authentication
-      include SignalId::Testing
-    end
     include ActionTextTestHelper, CardTestHelper, ChangeTestHelper, SessionTestHelper
   end
 end
@@ -73,11 +66,5 @@ RubyLLM.configure do |config|
 end
 
 unless Rails.application.config.x.local_authentication
-  Queenbee::Remote::Account.class_eval do
-    # because we use the account ID as the tenant name, we need it to be unique in each test to avoid
-    # parallelized tests clobbering each other.
-    def next_id
-      super + Random.rand(1000000)
-    end
-  end
+  load File.expand_path("../gems/fizzy-saas/test/test_helper.rb", __dir__)
 end

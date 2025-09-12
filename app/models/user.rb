@@ -21,9 +21,6 @@ class User < ApplicationRecord
   def deactivate
     sessions.delete_all
     accesses.destroy_all
-    unless Rails.application.config.x.local_authentication
-      SignalId::Database.on_master { signal_user&.destroy }
-    end
     update! active: false, email_address: deactived_email_address
   end
 

@@ -96,15 +96,7 @@ Rails.application.routes.draw do
   resource :session do
     scope module: "sessions" do
       resources :transfers, only: %i[ show update ]
-      resource :launchpad, only: %i[ show update ], controller: "launchpad"
     end
-  end
-
-  namespace :signup do
-    get "/" => "accounts#new"
-    resources :accounts, only: %i[ new create ]
-    get "/session" => "sessions#create" # redirect from Launchpad after mid-signup authentication
-    resources :completions, only: %i[ new create ]
   end
 
   resources :users do
@@ -189,6 +181,10 @@ Rails.application.routes.draw do
   match "/500", to: "errors#internal_server_error", via: :all
 
   root "events#index"
+
+  unless Rails.application.config.x.local_authentication
+    mount Fizzy::Saas::Engine, at: "/", as: "saas"
+  end
 
   namespace :admin do
     mount MissionControl::Jobs::Engine, at: "/jobs"

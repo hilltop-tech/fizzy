@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :require_local_auth, only: %i[ new create ]
   require_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_path, alert: "Try again later." }
 
@@ -19,9 +18,4 @@ class SessionsController < ApplicationController
     terminate_session
     redirect_to_logout_url
   end
-
-  private
-    def require_local_auth
-      head :forbidden unless Rails.application.config.x.local_authentication
-    end
 end

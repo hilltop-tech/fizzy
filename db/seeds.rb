@@ -13,6 +13,8 @@ end
 def create_tenant(signal_account_name, bare: false)
   if bare
     queenbee_id = Digest::SHA256.hexdigest(signal_account_name)[0..8].to_i(16)
+  elsif Rails.application.config.x.local_authentication
+    queenbee_id = ActiveRecord::FixtureSet.identify signal_account_name
   else
     signal_account = SignalId::Account.find_by_product_and_name!("fizzy", signal_account_name)
     queenbee_id = signal_account.queenbee_id
@@ -20,7 +22,7 @@ def create_tenant(signal_account_name, bare: false)
 
   ApplicationRecord.destroy_tenant queenbee_id
   ApplicationRecord.create_tenant(queenbee_id) do
-    account = if bare
+    account = if bare || Rails.application.config.x.local_authentication
       Account.create(name: signal_account_name, queenbee_id: queenbee_id).tap do
         User.create!(
           name: "David Heinemeier Hansson",
@@ -38,30 +40,44 @@ def create_tenant(signal_account_name, bare: false)
 end
 
 def find_or_create_user(full_name, email_address)
-  SignalId::Database.on_master do
-    unless signal_identity = SignalId::Identity.find_by_email_address(email_address)
-      signal_identity = SignalId::Identity.create!(
-        name: full_name,
-        email_address: email_address,
-        username: email_address,
-        password: "secret123456"
-      )
-    end
-
-    signal_account = Account.sole.signal_account
-    signal_user = SignalId::User.find_or_create_by!(identity: signal_identity, account: signal_account)
-
-    if user = User.find_by(signal_user_id: signal_user.id)
+  if Rails.application.config.x.local_authentication
+    if user = User.find_by(email_address: email_address)
       user.password = "secret123456"
       user.save!
       user
     else
       User.create!(
-        signal_user_id: signal_user.id,
-        name: signal_identity.name,
-        email_address: signal_identity.email_address,
+        name: full_name,
+        email_address: email_address,
         password: "secret123456"
       )
+    end
+  else
+    SignalId::Database.on_master do
+      unless signal_identity = SignalId::Identity.find_by_email_address(email_address)
+        signal_identity = SignalId::Identity.create!(
+          name: full_name,
+          email_address: email_address,
+          username: email_address,
+          password: "secret123456"
+        )
+      end
+
+      signal_account = Account.sole.signal_account
+      signal_user = SignalId::User.find_or_create_by!(identity: signal_identity, account: signal_account)
+
+      if user = User.find_by(signal_user_id: signal_user.id)
+        user.password = "secret123456"
+        user.save!
+        user
+      else
+        User.create!(
+          signal_user_id: signal_user.id,
+          name: signal_identity.name,
+          email_address: signal_identity.email_address,
+          password: "secret123456"
+        )
+      end
     end
   end
 end

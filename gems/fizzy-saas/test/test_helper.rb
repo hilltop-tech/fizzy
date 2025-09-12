@@ -1,15 +1,20 @@
-# Configure Rails Environment
-ENV["RAILS_ENV"] = "test"
+require "signal_id/testing"
+require "queenbee/testing/mocks"
 
-require_relative "../test/dummy/config/environment"
-ActiveRecord::Migrator.migrations_paths = [ File.expand_path("../test/dummy/db/migrate", __dir__) ]
-ActiveRecord::Migrator.migrations_paths << File.expand_path("../db/migrate", __dir__)
-require "rails/test_help"
+module ActiveSupport
+  class TestCase
+    include SignalId::Testing
 
-# Load fixtures from the engine
-if ActiveSupport::TestCase.respond_to?(:fixture_paths=)
-  ActiveSupport::TestCase.fixture_paths = [ File.expand_path("fixtures", __dir__) ]
-  ActionDispatch::IntegrationTest.fixture_paths = ActiveSupport::TestCase.fixture_paths
-  ActiveSupport::TestCase.file_fixture_path = File.expand_path("fixtures", __dir__) + "/files"
-  ActiveSupport::TestCase.fixtures :all
+    def saas_extension_sign_in_as(user)
+      put saas.session_launchpad_path, params: { sig: user.signal_user.perishable_signature }
+    end
+  end
+end
+
+Queenbee::Remote::Account.class_eval do
+  # because we use the account ID as the tenant name, we need it to be unique in each test to avoid
+  # parallelized tests clobbering each other.
+  def next_id
+    super + Random.rand(1000000)
+  end
 end
