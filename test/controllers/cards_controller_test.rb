@@ -39,7 +39,7 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
         image: fixture_file_upload("moon.jpg", "image/jpeg"),
         description: "Something more in-depth",
         tag_ids: [ tags(:mobile).id ] } }
-    assert_response :success
+    assert_redirected_to card_path(cards(:logo))
 
     card = cards(:logo).reload
     assert_equal "Logo needs to change", card.title
