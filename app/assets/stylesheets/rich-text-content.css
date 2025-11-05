@@ -1,13 +1,13 @@
 @layer components {
   .rich-text-content {
-    --block-margin: 0;
+    --block-margin: 0.5lh;
 
     :where(h1, h2, h3, h4, h5, h6) {
       display: block;
       font-weight: 800;
       letter-spacing: -0.02ch;
       line-height: 1.1;
-      margin-block: var(--block-margin);
+      margin-block: 0 var(--block-margin);
       overflow-wrap: break-word;
       text-wrap: balance;
     }
