@@ -26,7 +26,7 @@ class Card < ApplicationRecord
     case index
     when "stalled" then stalled
     when "postponing_soon" then postponing_soon
-    when "closed" then closed.recently_closed_first
+    when "closed" then closed
     when "not_now" then postponed.latest
     when "golden" then golden
     when "draft" then drafted
