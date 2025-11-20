@@ -28,7 +28,7 @@ module ColumnsHelper
     tag.section(id: id, class: classes, tabindex: "0", "aria-selected": selected, data: data, **properties) do
       tag.div(class: "cards__transition-container", data: {
         controller: "navigable-list",
-        navigable_list_support_horizontal_navigation_value: "false",
+        navigable_list_supports_horizontal_navigation_value: "false",
         navigable_list_prevent_handled_keys_value: "true",
         navigable_list_auto_select_value: "false",
         navigable_list_actionable_items_value: "true",

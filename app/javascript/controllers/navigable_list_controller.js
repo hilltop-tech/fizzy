@@ -9,8 +9,8 @@ export default class extends Controller {
     focusOnSelection: { type: Boolean, default: true },
     actionableItems: { type: Boolean, default: false },
     reverseNavigation: { type: Boolean, default: false },
-    supportHorizontalNavigation: { type: Boolean, default: true },
-    supportVerticalNavigation: { type: Boolean, default: true },
+    supportsHorizontalNavigation: { type: Boolean, default: true },
+    supportsVerticalNavigation: { type: Boolean, default: true },
     hasNestedNavigation: { type: Boolean, default: false },
     preventHandledKeys: { type: Boolean, default: false },
     autoSelect: { type: Boolean, default: true }
@@ -132,11 +132,15 @@ export default class extends Controller {
   }
 
   #clickCurrentItem(event) {
-    if (this.actionableItemsValue && this.currentItem && this.#visibleItems.length) {
+    if (this.actionableItemsValue && this.currentItem && this.#visibleItems.length && this.#isFocusContainedOnNavigableItem) {
       const clickableElement = this.currentItem.querySelector("a,button") || this.currentItem
       clickableElement.click()
       event.preventDefault()
     }
+  }
+
+  get #isFocusContainedOnNavigableItem() {
+    return this.itemTargets.some(item => item.contains(document.activeElement))
   }
 
   #toggleCurrentItem(event) {
@@ -185,24 +189,24 @@ export default class extends Controller {
 
   #keyHandlers = {
     ArrowDown(event) {
-      if (this.supportVerticalNavigationValue) {
+      if (this.supportsVerticalNavigationValue) {
         const selectMethod = this.reverseNavigationValue ? this.#selectPrevious.bind(this) : this.#selectNext.bind(this)
         this.#handleArrowKey(event, selectMethod)
       }
     },
     ArrowUp(event) {
-      if (this.supportVerticalNavigationValue) {
+      if (this.supportsVerticalNavigationValue) {
         const selectMethod = this.reverseNavigationValue ? this.#selectNext.bind(this) : this.#selectPrevious.bind(this)
         this.#handleArrowKey(event, selectMethod)
       }
     },
     ArrowRight(event) {
-      if (this.supportHorizontalNavigationValue) {
+      if (this.supportsHorizontalNavigationValue) {
         this.#handleArrowKey(event, this.#selectNext.bind(this))
       }
     },
     ArrowLeft(event) {
-      if (this.supportHorizontalNavigationValue) {
+      if (this.supportsHorizontalNavigationValue) {
         this.#handleArrowKey(event, this.#selectPrevious.bind(this))
       }
     },
