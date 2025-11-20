@@ -438,9 +438,7 @@
 
     /* Cover bubbles and cards on small viewports */
     @media (max-width: 639px) {
-      &:not(.cards--closed &) {
-        margin-inline: calc(-1 * var(--cards-gap) - var(--main-padding));
-      }
+      margin-inline: calc(-1 * var(--cards-gap) - var(--main-padding));
     }
 
     &, .cards__filter {
@@ -659,6 +657,7 @@
   /* On Deck (Not Now)
   /* ------------------------------------------------------------------------ */
 
+  .cards--closed,
   .cards--on-deck {
     --card-color: var(--color-ink-light) !important;
 
@@ -669,6 +668,13 @@
     .bubble {
       display: none !important;
     }
+  }
+
+  /* Closed (Done)
+  /* ------------------------------------------------------------------------ */
+
+  .cards--closed {
+
   }
 
   /* Doing
