@@ -1,58 +1,20 @@
 @layer components {
   .theme-switcher {
-    --gap: 8px;
-
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap);
-    inline-size: 100%;
-    justify-content: center;
-    margin: 1rem auto;
-    max-inline-size: 100%;
-  }
-
-  .theme-switcher__btn {
-    --btn-border-radius: 0.4em;
-
-    align-items: center;
-    aspect-ratio: 5/3;
-    background-color: var(--color-ink-lightest);
-    border: none;
-    border-radius: 0.5em;
-    color: inherit;
-    cursor: pointer;
-    display: flex;
-    flex-basis: calc((100% - var(--gap) * 2) / 3);
-    flex-direction: column;
-    font-size: var(--text-small);
-    line-height: 1;
-    justify-content: center;
-    overflow: hidden;
-    padding: 0.5em;
-    position: relative;
-    row-gap: 0.3lh;
-    text-align: center;
-
-    .icon {
-      --icon-size: 2em;
-    }
-
-    span {
-      display: block;
-      text-wrap: nowrap;
-    }
-
     @media (max-width: 639px) {
-      font-size: var(--text-x-small);
-      font-weight: 500;
+      flex-direction: column;
     }
+  }
+  .theme-switcher__btn {
+    --btn-background: var(--color-ink-lightest);
+    --btn-border-radius: 0.4em;
+    --btn-border-size: 0;
+    --btn-gap: 0.3lh;
+    --icon-size: 2em;
 
-    @media (any-hover: hover) {
-      &:hover {
-        background-color: var(--color-ink-lighter);
-      }
-    }
+    flex: 1 0 33%;
+    flex-direction: column;
+    position: relative;
+    white-space: nowrap;
 
     &[aria-selected="true"] {
       background-color: var(--color-selected);

@@ -1,20 +1,20 @@
-<div class="flex flex-column align-center gap txt-medium--responsive txt-medium margin-block-start-double">
-  <strong class="txt-medium">Appearance</strong>
+<section>
+  <strong class="divider txt-large">Appearance</strong>
 
-  <div class="theme-switcher">
-    <button type="button" class="theme-switcher__btn" data-action="click->theme#setLight" data-theme-target="lightBtn">
+  <div class="theme-switcher flex gap max-width justify-center txt-small margin-block-start-half">
+    <button type="button" class="btn theme-switcher__btn" data-action="click->theme#setLight" data-theme-target="lightBtn">
       <%= icon_tag "sun" %>
-      <span>Always light</span>
+      <span class="overflow-ellipsis">Always light</span>
     </button>
 
-    <button type="button" class="theme-switcher__btn" data-action="click->theme#setDark" data-theme-target="darkBtn">
+    <button type="button" class="btn theme-switcher__btn" data-action="click->theme#setDark" data-theme-target="darkBtn">
       <%= icon_tag "moon" %>
-      <span>Always dark</span>
+      <span class="overflow-ellipsis">Always dark</span>
     </button>
 
-    <button type="button" class="theme-switcher__btn" data-action="click->theme#setAuto" data-theme-target="autoBtn">
+    <button type="button" class="btn theme-switcher__btn" data-action="click->theme#setAuto" data-theme-target="autoBtn">
       <%= icon_tag "monitor" %>
-      <span>Same as OS</span>
+      <span class="overflow-ellipsis">Same as OS</span>
     </button>
   </div>
-</div>
+</section>
