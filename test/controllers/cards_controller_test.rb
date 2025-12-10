@@ -134,9 +134,14 @@ class CardsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show as JSON" do
-    get card_path(cards(:logo)), as: :json
+    card = cards(:logo)
+    card.steps.create!(content: "First step")
+    card.steps.create!(content: "Second step", completed: true)
+
+    get card_path(card), as: :json
     assert_response :success
-    assert_equal cards(:logo).title, @response.parsed_body["title"]
+    assert_equal card.title, @response.parsed_body["title"]
+    assert_equal 2, @response.parsed_body["steps"].size
   end
 
   test "create as JSON" do
