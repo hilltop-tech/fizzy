@@ -116,9 +116,11 @@
     position: relative;
     scroll-snap-align: start;
 
-    @media (max-width: 639px) {
-      overflow: hidden;
-      scroll-snap-align: center;
+    &.is-expanded {
+      @media (max-width: 639px) {
+        overflow: hidden;
+        scroll-snap-align: center;
+      }
     }
 
     &.is-collapsed {
@@ -678,6 +680,7 @@
 
   /* Surface a mini bubble if there are cards with bubbles inside */
   .cards--maybe:has(.bubble:not([hidden])) .cards__expander-title,
+  .cards--maybe.is-collapsed:has(.bubble:not([hidden])) .cards__transition-container,
   .cards--doing.is-collapsed:has(.bubble:not([hidden])) .cards__transition-container {
     --bubble-color: var(--card-color, oklch(var(--lch-blue-medium)));
     --bubble-shape: 54% 46% 61% 39% / 57% 49% 51% 43%;
@@ -698,7 +701,7 @@
     }
 
     /* Maybe column: position bubble relative to the title, not the container */
-    .cards--maybe & {
+    .cards--maybe.is-expanded & {
       overflow: visible;
       position: relative;
 
