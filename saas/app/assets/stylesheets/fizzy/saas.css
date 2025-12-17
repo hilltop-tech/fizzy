@@ -23,10 +23,11 @@
     color: var(--settings-subscription-text-color);
 
     &::before {
-      content: "————";
+      border-block-start: 1px solid var(--settings-subscription-text-color);
+      content: "";
       display: block;
-      margin: auto;
-      text-align: center;
+      inline-size: 8ch;
+      margin: 0 auto 1ch;
     }
   }
 
