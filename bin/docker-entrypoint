@@ -2,7 +2,7 @@
 
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/thrust" ] && [ "${2}" == "./bin/rails" ] && [ "${3}" == "server" ]; then
-  ./bin/rails db:drop db:create db:migrate || ./bin/rails db:prepare
+  ./bin/rails db:prepare
 fi
 
 exec "${@}"
