@@ -1,0 +1,143 @@
+ja:
+  # Common
+  cancel: "キャンセル"
+  save: "保存"
+  delete: "削除"
+  edit: "編集"
+  create: "作成"
+  update: "更新"
+  close: "閉じる"
+  back: "戻る"
+  search: "検索"
+  filter: "絞り込み"
+
+  # Sessions
+  sessions:
+    new:
+      title: "メールアドレスを入力"
+      heading: "Fizzyを始める"
+      email_placeholder: "メールアドレスを入力してください..."
+      submit: "始める"
+      new_user_html: "<strong>初めての方は</strong> %{signup_link} してアカウントを作成してください。<strong>既にアカウントをお持ちの方は</strong> メールアドレスを入力してサインインしてください。"
+      existing_user: "メールアドレスを入力してサインインしてください。"
+      signup: "サインアップ"
+    magic_links:
+      title: "メールを確認してください"
+      description: "メールに記載されている認証コードを以下に入力してください："
+      code_placeholder: "••••••"
+      code_valid_for: "コードは %{time} 間有効です。"
+      code_sent_to: "%{email} に送信されました。"
+      dev_code_label: "開発環境用コードはこちら："
+    starts:
+      title: "サインイン中..."
+      description: "%{account} でサインインしています。しばらくお待ちください。"
+      submit: "サインイン"
+      submitting: "サインイン中..."
+
+  # Signups
+  signups:
+    new:
+      title: "Fizzyにサインアップ"
+      heading: "サインアップ"
+      email_placeholder: "メールアドレスを入力してください..."
+      description: "アカウントを作成するにはメールアドレスを入力してください。"
+      submit: "始める"
+
+  # Boards
+  boards:
+    index:
+      title: "ボード"
+      new_board: "新しいボードを作成"
+    new:
+      title: "新しいボードを作成"
+      name_placeholder: "名前を付けてください..."
+      submit: "ボードを作成"
+      cancel: "キャンセルして戻る"
+      validation_message: "ボード名は空にできません"
+    show:
+      edit: "編集"
+    edit:
+      title: "ボード設定"
+      admin_only: "管理者のみがこれらの設定を変更できます"
+      self_removal_prompt: "このボードから自分を削除してもよろしいですか？誰かが招待しない限り、戻ることはできません。"
+      save_changes: "変更を保存"
+      cancel: "キャンセルして戻る"
+      name:
+        title: "名前"
+        label: "ボード名"
+        placeholder: "名前を付けてください..."
+      users:
+        title: "アクセス"
+        all_access: "すべてのユーザーがアクセス可能"
+        selected_users: "選択されたユーザーのみ"
+        search_placeholder: "絞り込み..."
+      auto_close:
+        title: "自動完了"
+        description: "一定期間活動がないカードを自動的に完了としてマークします"
+      publication:
+        title: "公開"
+        description: "このボードをインターネット上で公開します"
+      delete:
+        title: "ボードを削除"
+        description: "このボードとすべてのカードを完全に削除します"
+        button: "ボードを削除"
+        confirmation: "このボードを削除してもよろしいですか？"
+
+  # Cards
+  cards:
+    new:
+      title_placeholder: "名前を付けてください..."
+      description_placeholder: "メモ、コンテキスト、画像、または動画を追加してください..."
+    edit:
+      title: "カードを編集"
+    comments:
+      new:
+        placeholder: "コメントを追加..."
+        placeholder_first: "最初のコメントを追加..."
+        post: "投稿"
+        post_title: "このコメントを投稿 (%{hotkey})"
+      edit:
+        title: "コメントを編集"
+        save: "保存"
+    steps:
+      new:
+        placeholder: "ステップを追加..."
+      edit:
+        placeholder: "ステップの名前..."
+    assignments:
+      new:
+        title: "担当者を割り当て"
+        search_placeholder: "絞り込み..."
+    tags:
+      new:
+        placeholder: "新しいタグを追加または絞り込み..."
+        placeholder_empty: "このタグに名前を付けてください..."
+
+  # Filters
+  filters:
+    settings:
+      title: "絞り込み"
+      terms_placeholder: "これらのカードを絞り込み... [F]"
+      filter_placeholder: "絞り込み..."
+      assignees: "担当者"
+      creators: "作成者"
+      closers: "完了者"
+      tags: "タグ"
+      boards: "ボード"
+
+  # Search
+  searches:
+    form:
+      label: "Fizzyを検索"
+      placeholder: "何かを探す..."
+      close: "検索を閉じる"
+
+  # Account Settings
+  account:
+    settings:
+      title: "アカウント設定"
+      name: "名前"
+      export: "エクスポート"
+      users: "ユーザー"
+      entropy: "自動延期"
+      cancellation: "アカウントのキャンセル"

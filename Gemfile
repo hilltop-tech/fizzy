@@ -3,6 +3,7 @@ source "https://rubygems.org"
 git_source(:bc) { |repo| "https://github.com/basecamp/#{repo}" }
 
 gem "rails", github: "rails/rails", branch: "main"
+gem "rails-i18n", "~> 8.0.0"
 
 # Assets & front end
 gem "importmap-rails"

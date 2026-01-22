@@ -1,9 +1,9 @@
 module CommentsHelper
   def new_comment_placeholder(card)
     if card.creator == Current.user && card.comments.empty?
-      "Next, add some notes, context, pictures, or video about this…"
+      t("cards.new.description_placeholder")
     else
-      "Type your comment…"
+      t("cards.comments.new.placeholder")
     end
   end
 end
