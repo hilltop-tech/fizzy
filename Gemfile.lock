@@ -274,6 +274,8 @@ GEM
     mocha (3.0.1)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
+    mysql2 (0.5.7)
+      bigdecimal
     net-http-persistent (4.0.8)
       connection_pool (>= 2.2.4, < 4)
     net-imap (0.6.2)
@@ -513,6 +515,7 @@ DEPENDENCIES
   mission_control-jobs
   mittens
   mocha
+  mysql2
   net-http-persistent
   platform_agent
   propshaft
