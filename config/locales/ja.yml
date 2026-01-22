@@ -2,6 +2,7 @@ ja:
   # Common
   cancel: "キャンセル"
   save: "保存"
+  save_changes: "変更を保存"
   delete: "削除"
   edit: "編集"
   create: "作成"
@@ -10,6 +11,12 @@ ja:
   back: "戻る"
   search: "検索"
   filter: "絞り込み"
+  add: "追加"
+  remove: "削除"
+  loading: "読み込み中..."
+  confirm: "確認"
+  yes: "はい"
+  no: "いいえ"
 
   # Sessions
   sessions:
@@ -104,14 +111,21 @@ ja:
         placeholder: "ステップを追加..."
       edit:
         placeholder: "ステップの名前..."
+        save: "変更を保存"
+        cancel: "変更をキャンセル"
+        delete: "このステップを削除"
     assignments:
       new:
-        title: "担当者を割り当て"
+        title: "これを割り当て..."
         search_placeholder: "絞り込み..."
+        me: "自分"
+        limit_message: "最大 %{limit} 人まで割り当て可能"
     tags:
       new:
+        title: "タグを付ける..."
         placeholder: "新しいタグを追加または絞り込み..."
         placeholder_empty: "このタグに名前を付けてください..."
+        create_tag: "タグを作成"
 
   # Filters
   filters:
@@ -132,12 +146,56 @@ ja:
       placeholder: "何かを探す..."
       close: "検索を閉じる"
 
+  # Navigation Menu
+  nav:
+    settings:
+      title: "設定"
+      account_settings: "アカウント設定"
+      my_profile: "マイプロフィール"
+      all_notifications: "すべての通知"
+      notification_settings: "通知設定"
+      sign_out: "サインアウト"
+    boards:
+      title: "ボード"
+      add_board: "ボードを追加"
+    tags:
+      title: "タグ"
+    people:
+      title: "メンバー"
+      invite_people: "メンバーを招待"
+    shortcuts:
+      title: "ショートカット"
+      golden_cards: "ゴールデンカード"
+      stalled_cards: "停滞中のカード"
+      cards_closing_soon: "まもなく完了するカード"
+      added_today: "今日追加"
+      done_today: "今日完了"
+    accounts:
+      title: "アカウント"
+      switch_account: "アカウントを切り替え"
+
+  # Layout
+  layout:
+    skip_to_main: "メインコンテンツへスキップ"
+
   # Account Settings
   account:
     settings:
       title: "アカウント設定"
-      name: "名前"
-      export: "エクスポート"
-      users: "ユーザー"
-      entropy: "自動延期"
-      cancellation: "アカウントのキャンセル"
+      admin_only: "管理者のみがこれらの設定を変更できます"
+      name:
+        placeholder: "アカウント名..."
+        save: "変更を保存"
+      users:
+        title: "このアカウントのメンバー"
+        filter_placeholder: "絞り込み..."
+        invite_people: "メンバーを招待"
+      entropy:
+        title: "自動完了"
+        description: "Fizzyは古いカードを永遠に放置しません。一定期間活動がない場合、カードは自動的に「今はやらない」に移動します。これはデフォルトのグローバル設定です — 各ボードで上書きできます。"
+      export:
+        title: "データのエクスポート"
+        description: "すべてのデータをダウンロード"
+      cancellation:
+        title: "アカウントのキャンセル"
+        description: "アカウントを削除"
