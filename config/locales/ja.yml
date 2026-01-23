@@ -70,6 +70,12 @@ ja:
 
   # Boards
   boards:
+    involvement:
+      watching_for_new_cards: "新しいカードを監視中"
+      no_one_watching: "誰も監視していません"
+      watch_this: "これを監視"
+      stop_watching: "監視を停止"
+      show_more_watchers: "さらに%{count}人の監視者を表示"
     index:
       title: "ボード"
       new_board: "新しいボードを作成"
