@@ -471,6 +471,25 @@ ja:
       save_changes: "変更を保存"
       cancel: "キャンセルして戻る"
       errors_title: "変更を保存できませんでした："
+    theme:
+      title: "外観"
+      always_light: "常に明るく"
+      always_dark: "常に暗く"
+      same_as_os: "OSと同じ"
+    transfer:
+      title: "デバイス"
+      description: "別のデバイスで自動的にログインするためのリンク。"
+      display_qr_code: "自動ログインQRコードを表示"
+      close_dialog: "ダイアログを閉じる"
+      copy_link: "自動ログインリンクをコピー"
+    access_tokens:
+      title: "開発者"
+      description: "Fizzy開発者APIで使用される%{link}を管理。"
+      personal_access_tokens: "パーソナルアクセストークン"
+    joins:
+      new:
+        title: "%{account}に参加"
+        continue: "続ける"
 
   # Account Settings
   account:
