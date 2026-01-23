@@ -63,6 +63,11 @@ ja:
       validation_message: "ボード名は空にできません"
     show:
       edit: "編集"
+    columns:
+      done: "完了"
+      not_now: "今はやらない"
+      maybe: "検討中"
+      triage: "トリアージ"
     edit:
       title: "ボード設定"
       admin_only: "管理者のみがこれらの設定を変更できます"
@@ -97,6 +102,12 @@ ja:
       description_placeholder: "メモ、コンテキスト、画像、または動画を追加してください..."
     edit:
       title: "カードを編集"
+      button: "編集"
+    closure:
+      completed_by: "%{name} が %{date} に完了しました。"
+      undo: "元に戻す"
+      mark_as_done: "完了としてマーク"
+      moves_to_not_now: "活動がない場合、%{time} に「今はやらない」に移動します。"
     comments:
       new:
         placeholder: "コメントを追加..."
@@ -177,6 +188,41 @@ ja:
   # Layout
   layout:
     skip_to_main: "メインコンテンツへスキップ"
+    home: "ホーム"
+
+  # Notifications
+  notifications:
+    index:
+      title: "通知"
+      notification_settings: "通知設定"
+    settings:
+      title: "通知設定"
+      boards_heading: "ボード"
+      push_notifications: "プッシュ通知"
+      email: "メール通知"
+
+  # Users
+  users:
+    show:
+      edit_profile: "プロフィールを編集"
+      profile_avatar: "%{name} のプロフィールアバター"
+      no_longer_on_account: "%{name} はもうこのアカウントにいません"
+      unverified: "未確認"
+      unverified_description: "サインインコードがこのメールアドレスに送信されましたが、ユーザーはまだログインして本人確認をしていません。"
+      cards_assigned_to: "%{name} に割り当てられたカードは？"
+      cards_added_by: "%{name} が追加したカードは？"
+      sign_out_device: "このデバイスでFizzyからサインアウト"
+    edit:
+      title: "プロフィールを編集"
+      back_to_profile: "プロフィール"
+      name_placeholder: "名前"
+      email_placeholder: "メールアドレス"
+      change_email: "メールアドレスを変更"
+      delete_avatar: "アバターを削除"
+      delete_avatar_confirm: "アバターを削除してもよろしいですか？この操作は元に戻せません。"
+      save_changes: "変更を保存"
+      cancel: "キャンセルして戻る"
+      errors_title: "変更を保存できませんでした："
 
   # Account Settings
   account:
