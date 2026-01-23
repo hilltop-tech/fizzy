@@ -115,6 +115,8 @@ ja:
 
   # Cards
   cards:
+    index:
+      no_cards_match_filter: "このフィルターに一致するカードがありません"
     new:
       title_placeholder: "名前を付けてください..."
       description_placeholder: "メモ、コンテキスト、画像、または動画を追加してください..."
@@ -681,14 +683,22 @@ ja:
   # Events
   events:
     index:
+      title: "ホーム"
       activity_in: "アクティビティ（対象："
       activity_across: "アクティビティ（全体）"
       latest_activity: "最新のアクティビティ"
+      add_card: "カードを追加"
+      add_board: "ボードを追加"
     filter:
       person: "メンバー..."
       board: "ボード..."
       everyone: "全員"
     day_timeline:
+      added: "追加"
+      updated: "更新"
+      done: "完了"
+      expand_column: "列を展開"
+      showing_most_recent: "最新の100件を表示中（%{hidden}件は非表示）"
       columns:
         show:
           back_to_activity: "アクティビティ"
