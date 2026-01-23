@@ -109,15 +109,24 @@ ja:
         search_placeholder: "絞り込み..."
       auto_close:
         title: "自動完了"
-        description: "一定期間活動がないカードを自動的に完了としてマークします"
+        description: "Fizzyは古いカードを永遠に放置しません。一定期間、誰もカードを更新、コメント、または移動しない場合、カードは自動的に「今はやらない」に移動します..."
+        days_label: "日"
       publication:
-        title: "公開"
-        description: "このボードをインターネット上で公開します"
+        title: "公開リンク"
+        description: "公開リンクをオンにすると、世界中の誰とでもこのボードを共有できます。ログインは不要で、Fizzyの他のものは見られません。"
+        turn_on: "公開リンクをオンにする"
+        turn_off: "公開リンクをオフにする"
+        copy_link: "公開リンクをコピー"
+        add_description: "公開ページにオプションの説明を追加"
+        note_placeholder: "このボードに関する公開メモを追加..."
+        save_changes: "変更を保存"
       delete:
         title: "ボードを削除"
-        description: "このボードとすべてのカードを完全に削除します"
-        button: "ボードを削除"
-        confirmation: "このボードを削除してもよろしいですか？"
+        button: "このボードを削除"
+        confirm_title: "このボードを削除しますか？"
+        confirm_message: "このボードとその上のすべてのカードを完全に削除してもよろしいですか？これは元に戻せません。"
+        cancel: "キャンセル"
+        confirm_button: "ボードを削除"
 
   # Cards
   cards:
