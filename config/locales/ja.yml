@@ -509,7 +509,8 @@ ja:
       personal_access_tokens: "パーソナルアクセストークン"
     joins:
       new:
-        title: "%{account}に参加"
+        title: "名前を入力してください"
+        name_placeholder: "フルネーム"
         continue: "続ける"
 
   # Account Settings

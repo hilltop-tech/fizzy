@@ -11,7 +11,7 @@
     </div>
 
     <% if Account.accepting_signups? %>
-      <p><%= t("sessions.new.new_user_html", signup_link: link_to(t("sessions.new.signup"), new_signup_path)).html_safe %></p>
+      <p><%= t("sessions.new.new_user_html", signup_link: link_to(t("sessions.new.signup"), new_signup_path)) %></p>
     <% else %>
       <p><%= t("sessions.new.existing_user") %></p>
     <% end %>
