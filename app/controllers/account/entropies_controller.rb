@@ -3,7 +3,7 @@ class Account::EntropiesController < ApplicationController
 
   def update
     Current.account.entropy.update!(entropy_params)
-    redirect_to account_settings_path, notice: "Account updated"
+    redirect_to account_settings_path, notice: t("flash.account_updated")
   end
 
   private

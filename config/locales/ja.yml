@@ -149,6 +149,18 @@ ja:
       closers: "完了者"
       tags: "タグ"
       boards: "ボード"
+      assigned_to: "担当者..."
+      tagged: "タグ..."
+      board: "ボード..."
+      sort_by: "並び替え..."
+      added_by: "作成者..."
+      closed_by: "完了者..."
+      filter: "絞り込み..."
+      no_one: "未割り当て"
+    sorted_by:
+      newest: "新しい順"
+      oldest: "古い順"
+      latest: "最近更新された順"
 
   # Search
   searches:
@@ -245,3 +257,19 @@ ja:
       cancellation:
         title: "アカウントのキャンセル"
         description: "アカウントを削除"
+
+  # Flash Messages
+  flash:
+    try_again_later: "後でもう一度お試しください。"
+    something_went_wrong: "問題が発生しました"
+    invalid_unsubscribe_link: "無効な登録解除リンクです"
+    saved: "保存しました"
+    saved_removed_from_board: "保存しました（あなたはボードから削除されました）"
+    account_updated: "アカウントを更新しました"
+    settings_updated: "設定を更新しました"
+    export_started: "エクスポートを開始しました。準備ができたらメールでお知らせします。"
+    account_deleted: "アカウントを削除しました"
+    card_added: "カードを追加しました"
+    token_not_visible: "トークンは表示できません"
+    card_deleted: "カードを削除しました"
+    already_have_user: "このメールアドレスを持つユーザーがすでにこのアカウントに存在します"
