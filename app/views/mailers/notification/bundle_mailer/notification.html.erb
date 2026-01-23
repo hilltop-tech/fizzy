@@ -1,8 +1,10 @@
 <tr>
   <td>
-    <h1 class="title">Notifications since <%= @bundle.starts_at.strftime("%-l%P on %A, %B %-d") %></h1>
+    <h1 class="title"><%= t("mailers.notification_bundle.title", time: @bundle.starts_at.strftime("%-l%P on %A, %B %-d")) %></h1>
     <p class="subtitle margin-block-end-double">
-      You have <%= link_to pluralize(@notifications.count, "new notification"), notifications_url %><%= " in #{ Current.account.name }" if @user.identity.accounts.many? %>.
+      <%= t("mailers.notification_bundle.subtitle.other",
+            link: link_to(t("mailers.notification_bundle.new_notification.other", count: @notifications.count), notifications_url),
+            account_name: @user.identity.accounts.many? ? " in #{ Current.account.name }" : "").html_safe %>
     </p>
 
     <% @notifications.group_by(&:card).each do |card, notifications| %>
@@ -11,9 +13,9 @@
       <%= render partial: "notification/bundle_mailer/notification", collection: notifications, as: :notification %>
     <% end %>
 
-    <p class="footer">Fizzy emails you about new notifications every few hours. <br>
-      <%= link_to "Change how often you get these", notifications_settings_url %>
-      or <%= link_to "unsubscribe from all email notifications", new_notifications_unsubscribe_url(access_token: @unsubscribe_token) %>.
+    <p class="footer"><%= t("mailers.notification_bundle.footer_intro") %> <br>
+      <%= link_to t("mailers.notification_bundle.change_frequency"), notifications_settings_url %>
+      or <%= link_to t("mailers.notification_bundle.unsubscribe"), new_notifications_unsubscribe_url(access_token: @unsubscribe_token) %>.
     </p>
   </td>
 </tr>

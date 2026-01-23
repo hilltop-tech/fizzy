@@ -1,14 +1,14 @@
-<p>Your Fizzy account <strong><%= @account.name %></strong> was cancelled.</p>
+<p><%= t("mailers.account_cancellation.cancelled", account_name: @account.name).html_safe %></p>
 
-<h2>What happens now?</h2>
+<h2><%= t("mailers.account_cancellation.what_happens_heading") %></h2>
 
 <ul>
-  <li>No one can access the account anymore</li>
+  <li><%= t("mailers.account_cancellation.no_access") %></li>
   <% if @account.try(:subscription) %>
-  <li>We won't charge you anymore</li>
+  <li><%= t("mailers.account_cancellation.no_charges") %></li>
   <% end %>
-  <li>Everything in the account will be deleted in <%= distance_of_time_in_words_to_now(Account::Incineratable::INCINERATION_GRACE_PERIOD.from_now) %></li>
+  <li><%= t("mailers.account_cancellation.deletion_in", time: distance_of_time_in_words_to_now(Account::Incineratable::INCINERATION_GRACE_PERIOD.from_now)) %></li>
 </ul>
 
-<i>Changed your mind?</i>
-<p>If you want to cancel this deletion and restore your account, send us an email to <a href="mailto:support@fizzy.do">support@fizzy.do</a> as soon as possible.</p>
+<i><%= t("mailers.account_cancellation.changed_mind") %></i>
+<p><%= t("mailers.account_cancellation.restore_instructions").html_safe %></p>

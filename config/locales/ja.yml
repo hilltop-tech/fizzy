@@ -17,6 +17,7 @@ ja:
   confirm: "確認"
   yes: "はい"
   no: "いいえ"
+  are_you_sure: "本当によろしいですか？"
 
   # Sessions
   sessions:
@@ -40,6 +41,16 @@ ja:
       description: "%{account} でサインインしています。しばらくお待ちください。"
       submit: "サインイン"
       submitting: "サインイン中..."
+    menus:
+      show:
+        title: "アカウントを選択"
+        your_accounts: "Fizzyアカウント"
+        no_accounts_title: "うーん..."
+        no_accounts_description: "Fizzyアカウントがありません。"
+        signup_link: "新しいFizzyアカウントにサインアップ"
+    footer:
+      need_help: "お困りですか？"
+      send_email: "メールを送信"
 
   # Signups
   signups:
@@ -49,6 +60,13 @@ ja:
       email_placeholder: "メールアドレスを入力してください..."
       description: "アカウントを作成するにはメールアドレスを入力してください。"
       submit: "始める"
+    completions:
+      new:
+        title: "サインアップを完了"
+        name_placeholder: "フルネームを入力してください..."
+        description: "もうすぐです。名前を入力してFizzyアカウントを取得してください。"
+        continue: "続ける"
+        errors_title: "変更を保存できませんでした："
 
   # Boards
   boards:
@@ -168,6 +186,10 @@ ja:
       label: "Fizzyを検索"
       placeholder: "何かを探す..."
       close: "検索を閉じる"
+    show:
+      title: "検索"
+      title_with_query: "「%{query}」の検索結果"
+      home: "ホーム"
 
   # Navigation Menu
   nav:
@@ -183,6 +205,7 @@ ja:
       add_board: "ボードを追加"
     tags:
       title: "タグ"
+      all_tags: "すべてのタグ"
     people:
       title: "メンバー"
       invite_people: "メンバーを招待"
@@ -212,9 +235,52 @@ ja:
       boards_heading: "ボード"
       push_notifications: "プッシュ通知"
       email: "メール通知"
+      email_notifications_heading: "メール通知"
+      email_notifications_description: "数時間ごと、毎日、または毎週、すべての通知を1通のメールで受け取ります。"
+      bundle_email_frequency_label: "新しい通知についてメールで通知..."
+      browser:
+        turn_on_for_website: "このウェブサイトの通知をオンにする"
+        turn_on_for_browser: "%{browser}の通知をオンにする"
+        ensure_enabled: "<em>%{url}</em>のウェブブラウザ設定で通知が有効になっていることを確認してください。"
+    unsubscribes:
+      new:
+        unsubscribing: "%{user}としてすべてのメール通知の登録を解除しています..."
+        submit: "今すぐ登録解除"
+      show:
+        heading: "登録解除が完了しました"
+        description: "ありがとうございます、%{name}さん！Fizzyからメール通知は送信されなくなります。気が変わった場合は、%{settings_link}で再度有効にできます。"
+        settings_link: "通知設定"
+        back_to_fizzy: "Fizzyに戻る"
 
   # Users
   users:
+    email_addresses:
+      new:
+        title: "メールアドレスを変更"
+        back_to_profile: "マイプロフィール"
+        email_placeholder: "新しいメールアドレス"
+        description: "新しいメールアドレスを入力してから、メールを確認して変更を確定してください。"
+        submit: "続ける"
+      create:
+        title: "新しいメールアドレスを確認"
+        back_to_profile: "マイプロフィール"
+        heading: "メールを確認してください"
+        description: "%{email}にメールを送信しました"
+        instruction: "メール内のリンクをクリックして、今後Fizzyで使用するメールアドレスであることを確認してください。"
+        done: "完了"
+      confirmations:
+        show:
+          title: "メールアドレス変更を確認"
+          heading: "メールアドレス変更を確認"
+          description: "新しいメールアドレスを確認しています。しばらくお待ちください。"
+          submit: "完了"
+        invalid_token:
+          title: "リンクの有効期限切れ"
+          heading: "リンクの有効期限切れ"
+          description: "このメール確認リンクは有効ではありません — リンクは30分後に有効期限が切れます。もう一度試す必要があります。"
+          retry: "メールアドレスを変更"
+          help: "問題が解決しない場合は、%{support_link}までメールでご連絡ください。"
+          support_link: "サポートにメール"
     show:
       edit_profile: "プロフィールを編集"
       profile_avatar: "%{name} のプロフィールアバター"
@@ -257,6 +323,118 @@ ja:
       cancellation:
         title: "アカウントのキャンセル"
         description: "アカウントを削除"
+
+  # Tags
+  tags:
+    index:
+      title: "すべてのタグ"
+      delete: "削除"
+      confirm_delete: "本当によろしいですか？"
+
+  # Webhooks
+  webhooks:
+    index:
+      title: "Webhook"
+      description_line1: "Webhookを使うと、このFizzyボードで何かが起こったときに、別のアプリケーションに通知できます。購読するイベントを選択し、データを受信するURLを指定します。"
+      description_line2: "たとえば、Fizzyに新しいカードが追加されたときに、BasecampのCampfireチャットに投稿するWebhookを作成できます。"
+      set_up_new_webhook: "新しいWebhookを設定"
+    new:
+      title: "Webhookを設定"
+      back_link: "Webhook"
+      name_placeholder: "このWebhookに名前を付けてください..."
+      payload_url: "ペイロードURL"
+      payload_url_description: "これは、Fizzyからペイロードを受信するアプリのURLです。"
+      url_placeholder: "https://example.com"
+      events: "イベント"
+      events_description: "次の場合にペイロードURLへの呼び出しをトリガー："
+      create_webhook: "Webhookを作成"
+      go_back: "戻る"
+    edit:
+      name_placeholder: "Webhookに名前を付けてください..."
+      events: "イベント"
+      events_description: "次の場合にペイロードURLへの呼び出しをトリガー："
+      save_changes: "変更を保存"
+      go_back: "戻る"
+    show:
+      back_link: "Webhook"
+      edit: "編集"
+      reactivate: "再アクティブ化"
+      secret: "シークレット"
+      secret_description: "各リクエストで %{code} ヘッダーを送信します。このシークレットを使用してリクエストボディの %{hmac} を %{sha256} で生成し、リクエストが当社から送信されたことを確認できます。"
+      subscribed_to: "購読中"
+      no_subscriptions: "このWebhookはどのイベントも購読していません。トリガーされることはありません。"
+      deliveries: "配信"
+      no_deliveries: "このWebhookはまだトリガーされていません"
+    webhook:
+      remove_confirm: "このWebhookを完全に削除してもよろしいですか？"
+      remove: "%{name} を削除"
+    form:
+      enable_all: "すべて有効にする"
+      disable_all: "すべて無効にする"
+    action_labels:
+      card_published: "カードが追加された"
+      card_title_changed: "カードのタイトルが変更された"
+      card_board_changed: "カードのボードが変更された"
+      comment_created: "コメントが追加された"
+      card_assigned: "カードが割り当てられた"
+      card_unassigned: "カードの割り当てが解除された"
+      card_triaged: "カードの列が変更された"
+      card_closed: "カードが「完了」に移動した"
+      card_reopened: "カードが再オープンされた"
+      card_postponed: "カードが「今はやらない」に移動した"
+      card_auto_postponed: "カードが非アクティブにより「今はやらない」に移動した"
+      card_sent_back_to_triage: "カードが「検討中」に戻された"
+
+  # Mailers
+  mailers:
+    magic_link:
+      sign_in:
+        title: "Fizzy 認証コード"
+        subtitle: "Fizzyのサインインページで、この6文字の認証コードを入力してください："
+      sign_up:
+        title: "Fizzyへようこそ！"
+        subtitle: "新しいアカウントを作成するため、Fizzyのサインアップページでこの6文字の認証コードを入力してください："
+      code_expires: "このコードは %{time} 間有効です。"
+      need_help: "お困りですか？"
+      send_email: "メールを送信してください"
+
+    notification_bundle:
+      title: "%{time} 以降の通知"
+      subtitle:
+        one: "%{account_name} に %{link} があります。"
+        other: "%{account_name} に %{link} があります。"
+      new_notification:
+        one: "新しい通知が1件"
+        other: "新しい通知が%{count}件"
+      footer_intro: "Fizzyは数時間ごとに新しい通知をメールでお知らせします。"
+      change_frequency: "受信頻度を変更"
+      unsubscribe: "すべてのメール通知の配信を停止"
+
+    mention:
+      mentioned_you: "%{name} があなたにメンションしました："
+
+    export:
+      title: "Fizzyデータをダウンロード"
+      subtitle: "Fizzyデータのエクスポートが完了し、ダウンロードの準備ができました。"
+      download_link: "データをダウンロード"
+      need_help: "お困りですか？"
+      send_email: "メールを送信してください"
+
+    account_cancellation:
+      cancelled: "Fizzyアカウント <strong>%{account_name}</strong> がキャンセルされました。"
+      what_happens_heading: "今後の流れ"
+      no_access: "誰もアカウントにアクセスできなくなります"
+      no_charges: "今後料金は請求されません"
+      deletion_in: "アカウント内のすべてのデータは %{time} 後に削除されます"
+      changed_mind: "お考えが変わりましたか？"
+      restore_instructions: "この削除をキャンセルしてアカウントを復元したい場合は、できるだけ早く <a href=\"mailto:support@fizzy.do\">support@fizzy.do</a> までメールでご連絡ください。"
+
+    email_change:
+      subtitle: "メールアドレスの変更を確認"
+      confirm_button: "はい、このメールアドレスを使用します"
+      ignore_notice: "この変更をリクエストしていない場合は、このメールを無視してください。ボタンをクリックしない限り、メールアドレスは変更されません。"
+      need_help: "お困りですか？"
+      send_email: "メールを送信してください"
 
   # Flash Messages
   flash:

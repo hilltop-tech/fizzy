@@ -1,6 +1,6 @@
-<h1 class="title">Download your Fizzy data</h1>
-<p class="subtitle">Your Fizzy data export has finished processing and is ready to download.</p>
+<h1 class="title"><%= t("mailers.export.title") %></h1>
+<p class="subtitle"><%= t("mailers.export.subtitle") %></p>
 
-<p><%= link_to "Download your data", account_export_url(@export) %></p>
+<p><%= link_to t("mailers.export.download_link"), account_export_url(@export) %></p>
 
-<p class="footer">Need help? <%= mail_to "support@fizzy.do", "Send us an email" %>.</p>
+<p class="footer"><%= t("mailers.export.need_help") %> <%= mail_to "support@fizzy.do", t("mailers.export.send_email") %>.</p>

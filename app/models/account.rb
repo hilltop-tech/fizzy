@@ -22,6 +22,10 @@ class Account < ApplicationRecord
         account.users.create!(**owner.with_defaults(role: :owner, verified_at: Time.current))
       end
     end
+
+    def accepting_signups?
+      ENV.fetch("ALLOW_SIGNUPS", "true") == "true"
+    end
   end
 
   def slug
