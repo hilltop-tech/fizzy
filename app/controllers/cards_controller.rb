@@ -35,6 +35,7 @@ class CardsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
+      format.html { redirect_to @card }
       format.json { render :show }
     end
   end
