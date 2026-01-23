@@ -484,7 +484,8 @@ ja:
       copy_link: "自動ログインリンクをコピー"
     access_tokens:
       title: "開発者"
-      description: "Fizzy開発者APIで使用される%{link}を管理。"
+      description_prefix: "Fizzy開発者APIで使用される"
+      description_suffix: "を管理。"
       personal_access_tokens: "パーソナルアクセストークン"
     joins:
       new:
