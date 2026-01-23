@@ -29,7 +29,8 @@ if !Rails.env.local?
   #
   # https://edgeguides.rubyonrails.org/tuning_performance_for_deployment.html#puma
   workers Integer(ENV.fetch("WEB_CONCURRENCY") { Concurrent.physical_processor_count })
-  threads 1, 1
+  max_threads = Integer(ENV.fetch("RAILS_MAX_THREADS", 1))
+  threads 1, max_threads
 
   # Tell the Ruby VM that we're finished booting up.
   #

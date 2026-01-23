@@ -8,8 +8,33 @@ default: &default
       processes: <%= Integer(ENV.fetch("JOB_CONCURRENCY") { Concurrent.physical_processor_count }) %>
       polling_interval: 0.1
 
-development: *default
+production:
+  dispatchers:
+    - polling_interval: 1
+      batch_size: 200
+  workers:
+    - queues: [ "default", "solid_queue_recurring", "backend", "webhooks", "*" ]
+      threads: 2
+      processes: <%= Integer(ENV.fetch("JOB_CONCURRENCY") { 2 }) %>
+      polling_interval: 1
+
+development:
+  dispatchers:
+    - polling_interval: 2
+      batch_size: 100
+  workers:
+    - queues: [ "default", "solid_queue_recurring", "backend", "webhooks", "*" ]
+      threads: 2
+      processes: <%= Integer(ENV.fetch("JOB_CONCURRENCY") { 1 }) %>
+      polling_interval: 2
 test: *default
 beta: *default
-staging: *default
-production: *default
+staging:
+  dispatchers:
+    - polling_interval: 1
+      batch_size: 200
+  workers:
+    - queues: [ "default", "solid_queue_recurring", "backend", "webhooks", "*" ]
+      threads: 2
+      processes: <%= Integer(ENV.fetch("JOB_CONCURRENCY") { 2 }) %>
+      polling_interval: 1
