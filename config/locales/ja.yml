@@ -154,10 +154,12 @@ ja:
       remove_background: "背景画像を削除"
       add_background: "背景画像を追加"
     display:
-      by: "By"
-      updated: "Updated"
-      assigned_to: "Assigned to"
-      not_assigned: "Not assigned"
+      by: "作成者"
+      updated: "更新"
+      assigned_to: "担当"
+      not_assigned: "未割り当て"
+      drafted: "下書き"
+      added: "追加"
       not_now: "Not Now"
       done: "Done"
       last_updated: "最終更新"
@@ -195,6 +197,7 @@ ja:
     steps:
       new:
         placeholder: "ステップを追加..."
+        aria_label: "ステップを追加"
       edit:
         placeholder: "ステップの名前..."
         save: "変更を保存"

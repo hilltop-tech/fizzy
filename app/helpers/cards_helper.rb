@@ -29,7 +29,7 @@ module CardsHelper
   end
 
   def card_drafted_or_added(card)
-    card.drafted? ? "Drafted" : "Added"
+    card.drafted? ? I18n.t("cards.display.drafted") : I18n.t("cards.display.added")
   end
 
   def card_social_tags(card)
