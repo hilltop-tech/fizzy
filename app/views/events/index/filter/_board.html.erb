@@ -15,8 +15,8 @@
     <%= hidden_field_tag "board_ids[]", nil, data: { filter_settings_target: "field" } %>
   </template>
 
-  <%= filter_dialog "Board…" do %>
-    <%= filter_title "Board…" %>
+  <%= filter_dialog t("events.filter.board") do %>
+    <%= filter_title t("events.filter.board") %>
     <%= text_field_tag nil, nil, id: nil, placeholder: "Filter…", class: "input input--transparent txt-small font-weight-normal", autofocus: true,
           type: "search", autocorrect: "off", autocomplete: "off", data: { "1p-ignore": "true", filter_target: "input", dialog_target: "focusMouse", action: "input->filter#filter" } %>
 

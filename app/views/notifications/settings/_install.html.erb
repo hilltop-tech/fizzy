@@ -1,35 +1,35 @@
 <% unless (platform.chrome? && !platform.ios?) || (platform.firefox? && !platform.android?) %>
   <div class="notifications-help pwa__instructions hide-in-pwa">
-    <h2><%= platform.safari? && platform.desktop? ? "…or install" : "Install " -%> Fizzy as a web app.</h2>
+    <h2><%= platform.safari? && platform.desktop? ? t("notifications.settings.install.install_or") : t("notifications.settings.install.install_as_web_app") -%></h2>
     <% case
       when platform.edge? %>
         <ol>
-          <li>Click <em><%= icon_tag "install-edge", alt: "the app available - install Fizzy button" %></em>in the address bar.</li>
-          <li>Click <em>Install</em>.</li>
+          <li><%= t("notifications.settings.install.click_install_edge").html_safe %></li>
+          <li><%= t("notifications.settings.install.click_install_button").html_safe %></li>
         </ol>
       <% when platform.chrome? && platform.android? %>
         <ol>
-          <li>Tap the <em><%= icon_tag "menu-dots-vertical", alt: "More options" %></em> menu button.</li>
-          <li>Tap <em>Install app</em> in the menu.</li>
+          <li><%= t("notifications.settings.install.tap_menu").html_safe %></li>
+          <li><%= t("notifications.settings.install.tap_install_app").html_safe %></li>
         </ol>
       <% when platform.firefox? && platform.android? %>
         <ol>
-          <li>Tap the <em><%= icon_tag "menu-dots-vertical", alt: "More options" %></em> menu button.</li>
-          <li>Tap <em>Install</em> in the menu.</li>
+          <li><%= t("notifications.settings.install.tap_menu").html_safe %></li>
+          <li><%= t("notifications.settings.install.tap_install").html_safe %></li>
         </ol>
       <% when platform.safari? && platform.desktop? %>
         <ol>
-          <li>Click <em>File</em> in the top left.</li>
-          <li>Click <em>Add to Dock…</em>.</li>
+          <li><%= t("notifications.settings.install.click_file").html_safe %></li>
+          <li><%= t("notifications.settings.install.click_add_to_dock").html_safe %></li>
         </ol>
       <% when (platform.safari? || platform.chrome?) && platform.ios? %>
-        <p>To receive push notifications in <%= platform.browser.capitalize %> for <%= platform.operating_system %>, you must first install Fizzy as a web app.</p>
+        <p><%= t("notifications.settings.install.ios_push_requirement", os: platform.operating_system, browser: platform.browser.capitalize) %></p>
         <ol>
-          <li>Tap <em><%= icon_tag "share", alt: "the share button" %></em></li>
-          <li>Tap <em>Add to Home Screen</em>.</li>
+          <li><%= t("notifications.settings.install.tap_share").html_safe %></li>
+          <li><%= t("notifications.settings.install.tap_add_to_home").html_safe %></li>
         </ol>
       <% else %>
-        <p>Some platforms require you to install Fizzy as a web app to receive push notifications.</p>
+        <p><%= t("notifications.settings.install.platform_requirement") %></p>
     <% end %>
   </div>
 <% end %>

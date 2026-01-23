@@ -121,6 +121,41 @@ ja:
     edit:
       title: "カードを編集"
       button: "編集"
+      close_and_discard: "エディターを閉じて変更を破棄"
+      save_button_title: "変更を保存 (%{hotkey})"
+    container:
+      create_card: "カードを作成"
+      create_card_title: "カードを作成 (%{hotkey})"
+      create_and_add_another: "作成して続けて追加"
+      create_and_add_another_title: "作成して続けて追加 (%{hotkey})"
+    gild:
+      demote_to_normal: "通常に降格 (shift+g)"
+      demote_to_normal_title: "通常に降格"
+      promote_to_golden: "ゴールデンチケットに昇格 (shift+g)"
+      promote_to_golden_title: "ゴールデンチケットに昇格"
+    image:
+      remove_background: "背景画像を削除"
+      add_background: "背景画像を追加"
+    display:
+      by: "By"
+      updated: "Updated"
+      assigned_to: "Assigned to"
+      not_assigned: "Not assigned"
+      not_now: "Not Now"
+      done: "Done"
+      last_updated: "最終更新"
+    assignees:
+      assign: "割り当て"
+      assign_to_me: "自分に割り当て"
+    board:
+      choose_board: "このカードのボードを選択"
+      move_to: "カードの移動先..."
+      filter: "絞り込み..."
+    columns:
+      choose_column: "このカードの列を選択"
+      not_now: "今はやらない"
+      maybe: "検討中"
+      done: "完了"
     closure:
       completed_by: "%{name} が %{date} に完了しました。"
       undo: "元に戻す"
@@ -135,6 +170,11 @@ ja:
       edit:
         title: "コメントを編集"
         save: "保存"
+        save_title: "変更を保存 (%{hotkey})"
+        cancel: "キャンセル"
+        cancel_title: "キャンセル (%{hotkey})"
+        delete: "削除"
+        delete_confirm: "このコメントを削除してもよろしいですか？"
     steps:
       new:
         placeholder: "ステップを追加..."
@@ -155,6 +195,11 @@ ja:
         placeholder: "新しいタグを追加または絞り込み..."
         placeholder_empty: "このタグに名前を付けてください..."
         create_tag: "タグを作成"
+    watches:
+      stop_watching: "監視を停止 (shift+n)"
+      stop_watching_title: "監視を停止"
+      watch_this: "これを監視 (shift+n)"
+      watch_this_title: "これを監視"
 
   # Filters
   filters:
@@ -191,6 +236,64 @@ ja:
       title_with_query: "「%{query}」の検索結果"
       home: "ホーム"
 
+  # My Menu
+  my:
+    menu:
+      close_menu: "メニューを閉じる"
+      home: "ホーム"
+      assigned_to_me: "自分に割り当て"
+      added_by_me: "自分が追加"
+      nothing_matches: "該当するものがありません"
+    accounts:
+      title: "アカウント"
+    custom_views:
+      title: "カスタムビュー"
+      create: "カスタムビューを作成"
+    pins:
+      title: "ピン留め"
+      toggle: "ピンスタックを切り替え"
+      pinned: "ピン留め"
+    access_tokens:
+      index:
+        title: "パーソナルアクセストークン"
+        back_to_profile: "マイプロフィール"
+        description_with_tokens: "Fizzy APIへのアクセスに使用できる、生成したトークンです。"
+        description_empty: "パーソナルアクセストークンはパスワードのように使用して、Fizzy開発者APIにアクセスできます。必要な数のトークンを持つことができ、いつでも各トークンのアクセスを取り消すことができます。"
+        generate_new: "新しいアクセストークンを生成"
+        description: "説明"
+        permission: "権限"
+        created: "作成日"
+      new:
+        title: "パーソナルアクセストークンを生成"
+        back_to_tokens: "トークン"
+        description_label: "アクセストークンの説明"
+        description_placeholder: "例：Github"
+        permission_label: "権限"
+        permission_read: "読み取り"
+        permission_write: "読み取り + 書き込み"
+        generate: "アクセストークンを生成"
+        cancel: "キャンセルして戻る"
+      show:
+        title: "新しいパーソナルアクセストークン"
+        back_to_tokens: "トークン"
+        permission_read: "読み取り"
+        permission_write: "読み取り + 書き込み"
+        warning: "このアクセストークンは今すぐ保存してください。再度表示することはできません。"
+        copy: "アクセストークンをコピー"
+      access_token:
+        delete_confirm: "このアクセストークンを完全に取り消してもよろしいですか？"
+        edit_token: "このトークンを編集"
+
+  # Join Codes
+  join_codes:
+    new:
+      title: "Fizzyの%{account}に参加"
+      email_placeholder: "メールアドレス"
+      continue: "続ける"
+    inactive:
+      title: "このコードはすべて使い切られました"
+      description: "%{account}の誰かに新しいリンクを送ってもらうか、制限を増やしてもらってください。"
+      ok: "OK"
   # Navigation Menu
   nav:
     settings:
@@ -220,6 +323,24 @@ ja:
       title: "アカウント"
       switch_account: "アカウントを切り替え"
 
+  # My Menu
+  my:
+    menu:
+      close_menu: "メニューを閉じる"
+      home: "ホーム"
+      assigned_to_me: "自分に割り当て"
+      added_by_me: "自分が追加"
+      nothing_matches: "該当するものがありません"
+    accounts:
+      title: "アカウント"
+    custom_views:
+      title: "カスタムビュー"
+      create: "カスタムビューを作成"
+    pins:
+      title: "ピン留め"
+      toggle: "ピンスタックを切り替え"
+      pinned: "ピン留め"
+
   # Layout
   layout:
     skip_to_main: "メインコンテンツへスキップ"
@@ -230,6 +351,19 @@ ja:
     index:
       title: "通知"
       notification_settings: "通知設定"
+      new_for_you: "新着情報"
+      mark_all_as_read: "すべて既読にする"
+      nothing_new: "新しいものはありません"
+      showing_most_recent: "最新の %{max} 件を表示中（%{hidden} 件は非表示）"
+    tray:
+      title: "通知"
+      toggle: "通知スタックを切り替え"
+      settings: "設定"
+      see_more_new: "新しいアイテムをもっと見る"
+      see_older: "古いアイテムを見る"
+      clear_all: "すべてクリア"
+      mark_all_as_read_title: "すべての通知を既読にする"
+      notifications: "通知"
     settings:
       title: "通知設定"
       boards_heading: "ボード"
@@ -238,6 +372,38 @@ ja:
       email_notifications_heading: "メール通知"
       email_notifications_description: "数時間ごと、毎日、または毎週、すべての通知を1通のメールで受け取ります。"
       bundle_email_frequency_label: "新しい通知についてメールで通知..."
+      install:
+        install_as_web_app: "Fizzyをウェブアプリとしてインストール"
+        install_or: "...またはインストール"
+        click_install_edge: "アドレスバーの<em>アプリが利用可能 - Fizzyをインストール</em>ボタンをクリック"
+        click_install_button: "<em>インストール</em>をクリック"
+        tap_menu: "<em>その他のオプション</em>メニューボタンをタップ"
+        tap_install_app: "メニューの<em>アプリをインストール</em>をタップ"
+        tap_install: "メニューの<em>インストール</em>をタップ"
+        click_file: "左上の<em>ファイル</em>をクリック"
+        click_add_to_dock: "<em>Dockに追加...</em>をクリック"
+        ios_push_requirement: "%{os}の%{browser}でプッシュ通知を受け取るには、まずFizzyをウェブアプリとしてインストールする必要があります。"
+        tap_share: "<em>共有</em>ボタンをタップ"
+        tap_add_to_home: "<em>ホーム画面に追加</em>をタップ"
+        platform_requirement: "一部のプラットフォームでは、プッシュ通知を受け取るためにFizzyをウェブアプリとしてインストールする必要があります。"
+      system:
+        check_settings: "%{os}の設定を確認"
+        tap_settings: "<em>設定</em>をタップ"
+        tap_notifications: "<em>通知</em>をタップ"
+        allow_notifications: "<em>%{browser}の通知を許可</em>を<em>オン</em>に切り替え"
+        click_start_settings: "<em>スタート</em>、次に<em>設定</em>をクリック"
+        go_to_system_notification: "<em>システム &gt; 通知</em>に移動"
+        toggle_on_fizzy: "Fizzyを<em>オン</em>に切り替え"
+        click_apple_menu: "左上のAppleメニューをクリック"
+        click_system_settings: "<em>システム設定...</em>をクリック"
+        click_notifications: "<em>通知</em>をクリック"
+        click_fizzy: "<em>Fizzy</em>をクリック"
+        toggle_allow_notifications: "<em>通知を許可</em>を切り替え"
+        open_settings_app: "<em>設定</em>アプリを開く"
+        scroll_tap_fizzy: "スクロールして<em>Fizzy</em>をタップ"
+        tap_app_notifications: "<em>アプリの通知</em>をタップ"
+        scroll_to_fizzy: "<em>Fizzy</em>までスクロール"
+        ensure_browser_enabled: "システム設定で%{browser}の通知が許可されていることを確認してください。"
       browser:
         turn_on_for_website: "このウェブサイトの通知をオンにする"
         turn_on_for_browser: "%{browser}の通知をオンにする"
@@ -254,6 +420,10 @@ ja:
 
   # Users
   users:
+    events:
+      show:
+        title_self: "最近何をしていますか？"
+        title_other: "%{name}さんは最近何をしていますか？"
     email_addresses:
       new:
         title: "メールアドレスを変更"
@@ -435,6 +605,75 @@ ja:
       ignore_notice: "この変更をリクエストしていない場合は、このメールを無視してください。ボタンをクリックしない限り、メールアドレスは変更されません。"
       need_help: "お困りですか？"
       send_email: "メールを送信してください"
+
+  # Board Edit Users
+  boards_edit:
+    users:
+      access_heading: "このボードに誰がアクセスできますか？"
+      everyone: "全員"
+      everyone_access_label: "全員にこのボードへのアクセスを許可"
+      filter_placeholder: "絞り込み..."
+      select_all: "すべて選択"
+      select_none: "選択解除"
+
+  # Column Menu
+  column_menu:
+    column_options: "列のオプション"
+    edit_column: "列を編集"
+    move_left: "左に移動"
+    move_right: "右に移動"
+    delete_column: "列を削除"
+    delete_confirm: "この列を削除してもよろしいですか？カードは「検討中」に戻ります。"
+    save_changes: "変更を保存"
+    name_placeholder: "列に名前を付けてください"
+    name_required: "列名は空にできません"
+
+  # Not Now Column
+  not_now:
+    title: "列：今はやらない"
+
+  # Entropy Auto Close
+  entropy:
+    auto_close:
+      days_until_label: "自動完了までの日数"
+
+  # Filter Settings
+  filter_settings:
+    cards:
+      cards_label: "カード %{ids}"
+    indexed_by:
+      filter_by_label: "絞り込み..."
+      status_placeholder: "ステータス..."
+      filter_by_status: "ステータスで絞り込み..."
+    time_window:
+      created_label: "作成日"
+      updated_label: "更新日"
+
+  # Lightbox
+  lightbox:
+    close: "閉じる (esc)"
+    aria_label: "画像ビューアー（Escキーで閉じる）"
+
+  # Public Layout
+  public_layout:
+    skip_to_main: "メインコンテンツへスキップ"
+
+  # Events
+  events:
+    index:
+      activity_in: "アクティビティ（対象："
+      activity_across: "アクティビティ（全体）"
+      latest_activity: "最新のアクティビティ"
+    filter:
+      person: "メンバー..."
+      board: "ボード..."
+      everyone: "全員"
+    day_timeline:
+      columns:
+        show:
+          back_to_activity: "アクティビティ"
+    pagination:
+      load_more: "さらに読み込む..."
 
   # Flash Messages
   flash:
