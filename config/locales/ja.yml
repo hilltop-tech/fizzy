@@ -368,6 +368,9 @@ ja:
 
   # Notifications
   notifications:
+    mark_as_read: "既読にする"
+    mark_as_unread: "未読にする"
+    card_number: "カード %{number}"
     index:
       title: "通知"
       notification_settings: "通知設定"
@@ -384,6 +387,24 @@ ja:
       clear_all: "すべてクリア"
       mark_all_as_read_title: "すべての通知を既読にする"
       notifications: "通知"
+    event_body:
+      self: "自分自身"
+      assigned_to: "%{assignees}に割り当て"
+      unassigned_by: "%{creator}が割り当て解除"
+      added_by: "%{creator}が追加"
+      moved_to_done_by: "%{creator}が完了に移動"
+      reopened_by: "%{creator}が再オープン"
+      moved_to_not_now_by: "%{creator}が「今はやらない」に移動"
+      auto_moved_to_not_now: "非アクティブにより「今はやらない」に移動"
+      renamed_by: "%{creator}が名前を変更"
+      moved_by: "%{creator}が移動"
+      moved_to_column_by: "%{creator}が「%{column}」に移動"
+      moved_back_to_maybe_by: "%{creator}が「検討中」に戻す"
+    email_frequency:
+      never: "送信しない"
+      every_few_hours: "数時間ごと"
+      daily: "毎日"
+      weekly: "毎週"
     settings:
       title: "通知設定"
       boards_heading: "ボード"

@@ -8,19 +8,20 @@ module NotificationsHelper
 
   def event_notification_body(event)
     creator = event.creator.name
+    assignees_text = event.assignees.none? ? I18n.t("notifications.event_body.self") : event.assignees.pluck(:name).to_sentence
 
     case event_notification_action(event)
-    when "card_assigned" then "Assigned to #{event.assignees.none? ? "self" : event.assignees.pluck(:name).to_sentence}"
-    when "card_unassigned" then "Unassigned by #{creator}"
-    when "card_published" then "Added by #{creator}"
-    when "card_closed" then "Moved to Done by #{creator}"
-    when "card_reopened" then "Reopened by #{creator}"
-    when "card_postponed" then "Moved to Not Now by #{creator}"
-    when "card_auto_postponed" then "Moved to Not Now due to inactivity"
-    when "card_title_changed" then "Renamed by #{creator}"
-    when "card_board_changed" then "Moved by #{creator}"
-    when "card_triaged" then "Moved to #{event.particulars.dig("particulars", "column")} by #{creator}"
-    when "card_sent_back_to_triage" then "Moved back to Maybe? by #{creator}"
+    when "card_assigned" then I18n.t("notifications.event_body.assigned_to", assignees: assignees_text)
+    when "card_unassigned" then I18n.t("notifications.event_body.unassigned_by", creator: creator)
+    when "card_published" then I18n.t("notifications.event_body.added_by", creator: creator)
+    when "card_closed" then I18n.t("notifications.event_body.moved_to_done_by", creator: creator)
+    when "card_reopened" then I18n.t("notifications.event_body.reopened_by", creator: creator)
+    when "card_postponed" then I18n.t("notifications.event_body.moved_to_not_now_by", creator: creator)
+    when "card_auto_postponed" then I18n.t("notifications.event_body.auto_moved_to_not_now")
+    when "card_title_changed" then I18n.t("notifications.event_body.renamed_by", creator: creator)
+    when "card_board_changed" then I18n.t("notifications.event_body.moved_by", creator: creator)
+    when "card_triaged" then I18n.t("notifications.event_body.moved_to_column_by", column: event.particulars.dig("particulars", "column"), creator: creator)
+    when "card_sent_back_to_triage" then I18n.t("notifications.event_body.moved_back_to_maybe_by", creator: creator)
     when "comment_created" then comment_notification_body(event)
     else creator
     end
@@ -46,7 +47,7 @@ module NotificationsHelper
       button_to url,
           method: :delete,
           class: "card__notification-unread-indicator btn btn--circle borderless",
-          title: "Mark as unread",
+          title: I18n.t("notifications.mark_as_unread"),
           data: { action: "form#submit:stop badge#update:stop", form_target: "submit" },
           form: { data: { controller: "form" } } do
         concat(icon_tag("unseen"))
@@ -54,7 +55,7 @@ module NotificationsHelper
     else
       button_to url,
           class: "card__notification-unread-indicator btn btn--circle borderless",
-          title: "Mark as read",
+          title: I18n.t("notifications.mark_as_read"),
           data: { action: "form#submit:stop badge#update:stop", form_target: "submit" },
           form: { data: { controller: "form" } } do
         concat(icon_tag("remove"))
@@ -71,10 +72,10 @@ module NotificationsHelper
 
   def bundle_email_frequency_options_for(settings)
     options_for_select([
-      [ "Never", "never" ],
-      [ "Every few hours", "every_few_hours" ],
-      [ "Every day", "daily" ],
-      [ "Every week", "weekly" ]
+      [ I18n.t("notifications.email_frequency.never"), "never" ],
+      [ I18n.t("notifications.email_frequency.every_few_hours"), "every_few_hours" ],
+      [ I18n.t("notifications.email_frequency.daily"), "daily" ],
+      [ I18n.t("notifications.email_frequency.weekly"), "weekly" ]
     ], settings.bundle_email_frequency)
   end
 
@@ -93,6 +94,6 @@ module NotificationsHelper
     end
 
     def card_notification_title(card)
-      card.title.presence || "Card #{card.number}"
+      card.title.presence || I18n.t("notifications.card_number", number: card.number)
     end
 end
