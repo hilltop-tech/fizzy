@@ -50,7 +50,7 @@ class Event::Description
     end
 
     def comment_sentence(creator, card_title)
-      I18n.t("events.description.commented_on", creator: creator, card_title: card_title).html_safe
+      I18n.t("events.description.commented_on_html", creator: creator, card_title: card_title)
     end
 
     def action_sentence(creator, card_title)
@@ -60,17 +60,17 @@ class Event::Description
       when "card_unassigned"
         unassigned_sentence(creator, card_title)
       when "card_published"
-        I18n.t("events.description.added", creator: creator, card_title: card_title).html_safe
+        I18n.t("events.description.added_html", creator: creator, card_title: card_title)
       when "card_closed"
-        I18n.t("events.description.moved_to_done", creator: creator, card_title: card_title).html_safe
+        I18n.t("events.description.moved_to_done_html", creator: creator, card_title: card_title)
       when "card_reopened"
-        I18n.t("events.description.reopened", creator: creator, card_title: card_title).html_safe
+        I18n.t("events.description.reopened_html", creator: creator, card_title: card_title)
       when "card_postponed"
-        I18n.t("events.description.moved_to_not_now", creator: creator, card_title: card_title).html_safe
+        I18n.t("events.description.moved_to_not_now_html", creator: creator, card_title: card_title)
       when "card_auto_postponed"
-        I18n.t("events.description.auto_moved_to_not_now", card_title: card_title).html_safe
+        I18n.t("events.description.auto_moved_to_not_now_html", card_title: card_title)
       when "card_resumed"
-        I18n.t("events.description.resumed", creator: creator, card_title: card_title).html_safe
+        I18n.t("events.description.resumed_html", creator: creator, card_title: card_title)
       when "card_title_changed"
         renamed_sentence(creator, card_title)
       when "card_board_changed", "card_collection_changed"
@@ -78,36 +78,36 @@ class Event::Description
       when "card_triaged"
         triaged_sentence(creator, card_title)
       when "card_sent_back_to_triage"
-        I18n.t("events.description.moved_back_to_maybe", creator: creator, card_title: card_title).html_safe
+        I18n.t("events.description.moved_back_to_maybe_html", creator: creator, card_title: card_title)
       end
     end
 
     def assigned_sentence(creator, card_title)
       if event.assignees.include?(user)
-        I18n.t("events.description.will_handle", creator: creator, card_title: card_title).html_safe
+        I18n.t("events.description.will_handle_html", creator: creator, card_title: card_title)
       else
         assignees_text = h(event.assignees.pluck(:name).to_sentence)
-        I18n.t("events.description.assigned_to", creator: creator, assignees: assignees_text, card_title: card_title).html_safe
+        I18n.t("events.description.assigned_to_html", creator: creator, assignees: assignees_text, card_title: card_title)
       end
     end
 
     def unassigned_sentence(creator, card_title)
       assignees_text = event.assignees.include?(user) ? I18n.t("events.description.yourself") : event.assignees.pluck(:name).to_sentence
-      I18n.t("events.description.unassigned_from", creator: creator, assignees: h(assignees_text), card_title: card_title).html_safe
+      I18n.t("events.description.unassigned_from_html", creator: creator, assignees: h(assignees_text), card_title: card_title)
     end
 
     def renamed_sentence(creator, card_title)
       old_title = event.particulars.dig("particulars", "old_title")
-      I18n.t("events.description.renamed", creator: creator, card_title: card_title, old_title: h(old_title)).html_safe
+      I18n.t("events.description.renamed_html", creator: creator, card_title: card_title, old_title: h(old_title))
     end
 
     def moved_sentence(creator, card_title)
       new_location = event.particulars.dig("particulars", "new_board") || event.particulars.dig("particulars", "new_collection")
-      I18n.t("events.description.moved_to", creator: creator, card_title: card_title, location: h(new_location)).html_safe
+      I18n.t("events.description.moved_to_html", creator: creator, card_title: card_title, location: h(new_location))
     end
 
     def triaged_sentence(creator, card_title)
       column = event.particulars.dig("particulars", "column")
-      I18n.t("events.description.moved_to", creator: creator, card_title: card_title, location: h(column)).html_safe
+      I18n.t("events.description.moved_to_html", creator: creator, card_title: card_title, location: h(column))
     end
 end
