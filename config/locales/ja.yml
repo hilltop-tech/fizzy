@@ -343,24 +343,6 @@ ja:
       title: "アカウント"
       switch_account: "アカウントを切り替え"
 
-  # My Menu
-  my:
-    menu:
-      close_menu: "メニューを閉じる"
-      home: "ホーム"
-      assigned_to_me: "自分に割り当て"
-      added_by_me: "自分が追加"
-      nothing_matches: "該当するものがありません"
-    accounts:
-      title: "アカウント"
-    custom_views:
-      title: "カスタムビュー"
-      create: "カスタムビューを作成"
-    pins:
-      title: "ピン留め"
-      toggle: "ピンスタックを切り替え"
-      pinned: "ピン留め"
-
   # Layout
   layout:
     skip_to_main: "メインコンテンツへスキップ"
