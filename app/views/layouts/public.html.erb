@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= I18n.locale %>">
   <%= render "layouts/shared/head" %>
 
   <body class="public <%= @body_class %>" data-controller="local-time timezone-cookie" data-action="turbo:morph@window->local-time#refreshAll">

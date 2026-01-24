@@ -3,6 +3,19 @@ import { differenceInDays, secondsToDate } from "helpers/date_helpers"
 
 const DEFAULT_LOCALE = "en-US"
 
+const TRANSLATIONS = {
+  "ja": {
+    today: "今日",
+    yesterday: "昨日",
+    tomorrow: "明日"
+  },
+  "en": {
+    today: "today",
+    yesterday: "yesterday",
+    tomorrow: "tomorrow"
+  }
+}
+
 export default class extends Controller {
   static targets = [ "time", "date", "datetime", "shortdate", "ago", "indays", "daysago", "agoorweekday", "timeordate" ]
   static values = { refreshInterval: Number }
@@ -126,9 +139,10 @@ class AgoFormatter {
 class DaysAgoFormatter {
   format(date) {
     const days = differenceInDays(date, new Date())
+    const locale = getLocale()
 
-    if (days <= 0) return styleableValue("today")
-    if (days === 1) return styleableValue("yesterday")
+    if (days <= 0) return styleableValue(t("today", locale))
+    if (days === 1) return styleableValue(t("yesterday", locale))
     return `${styleableValue(days)} days ago`
   }
 }
@@ -148,9 +162,10 @@ class DaysAgoOrWeekdayFormatter {
 class InDaysFormatter {
   format(date) {
     const days = differenceInDays(new Date(), date)
+    const locale = getLocale()
 
-    if (days <= 0) return styleableValue("today")
-    if (days === 1) return styleableValue("tomorrow")
+    if (days <= 0) return styleableValue(t("today", locale))
+    if (days === 1) return styleableValue(t("tomorrow", locale))
     return `in ${styleableValue(days)} days`
   }
 }
@@ -169,4 +184,13 @@ class TimeOrDateFormatter {
 
 function styleableValue(value) {
   return `<span class="local-time-value">${value}</span>`
+}
+
+function getLocale() {
+  const htmlLang = document.documentElement.lang || "en"
+  return htmlLang.split("-")[0]
+}
+
+function t(key, locale) {
+  return TRANSLATIONS[locale]?.[key] || TRANSLATIONS["en"][key]
 }
