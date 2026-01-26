@@ -16,15 +16,13 @@
     <%= local_datetime_tag(card.last_active_at, style: :daysago) %>
   </span>
 
-  <div class="card__meta-text card__meta-text--due">
+  <span class="card__meta-text card__meta-text--due <%= 'card__meta-text--overdue' if card.due_on.present? && card.overdue? %>">
     <% if card.due_on.present? %>
-      <span class="<%= 'card__meta-text--overdue' if card.overdue? %>">
-        <%= icon_tag "refresh--meta" %>
-        <%= t("cards.display.due") %>
-        <strong><%= l(card.due_on, format: :short) %></strong>
-      </span>
+      <%= icon_tag "refresh--meta" %>
+      <%= t("cards.display.due") %>
+      <strong><%= l(card.due_on, format: :short) %></strong>
     <% end %>
-  </div>
+  </span>
 
   <div class="card__meta-avatars card__meta-avatars--assignees">
     <%= render "cards/display/preview/assignees", card: card %>

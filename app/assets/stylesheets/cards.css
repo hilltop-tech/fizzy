@@ -291,8 +291,9 @@
     color: oklch(var(--lch-red-dark));
   }
 
+  /* Due date in meta area */
   .card__meta-due-editor {
-    display: contents;
+    position: relative;
   }
 
   .card__due-trigger {
@@ -301,6 +302,21 @@
     padding: 0;
     cursor: pointer;
     text-align: start;
+    color: inherit;
+    font: inherit;
+    text-transform: inherit;
+    line-height: inherit;
+    white-space: nowrap;
+
+    .icon {
+      --icon-size: 0.9em;
+      margin-inline-end: 0.5ch;
+      vertical-align: top;
+    }
+
+    strong {
+      font-weight: 900;
+    }
 
     &:hover {
       text-decoration: underline;

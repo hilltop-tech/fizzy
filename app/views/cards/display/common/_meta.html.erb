@@ -17,9 +17,7 @@
     <%= local_datetime_tag(card.last_active_at, style: :daysago) %>
   </span>
 
-  <div class="card__meta-text card__meta-text--due">
-    <%= local_assigns[:due_on_content] %>
-  </div>
+  <%= local_assigns[:due_on_content] %>
 
   <div class="card__meta-avatars card__meta-avatars--assignees">
     <%= local_assigns[:assignees_content] %>

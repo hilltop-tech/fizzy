@@ -1,19 +1,17 @@
-<div id="<%= dom_id(card, :due_on_editor) %>" class="card__meta-due-editor position-relative"
+<span id="<%= dom_id(card, :due_on_editor) %>" class="card__meta-text card__meta-text--due card__meta-due-editor"
     data-controller="dialog"
     data-action="keydown.esc->dialog#close click@document->dialog#closeOnClickOutside mouseenter->dialog#loadLazyFrames" <%= "hidden" if card.closed? %>>
-  <button class="card__due-trigger btn--plain" data-action="click->dialog#open:stop keydown.d@document->hotkey#click" data-controller="tooltip hotkey" tabindex=<%= (local_assigns.key?(:preview) && local_assigns[:preview]) ? -1 : 0 %>>
-    <span class="card__meta-text card__meta-text--due <%= 'card__meta-text--overdue' if card.overdue? %>">
-      <%= icon_tag "refresh--meta" %>
-      <% if card.due_on.present? %>
-        <%= t("cards.display.due") %>
-        <strong><%= l(card.due_on, format: :short) %></strong>
-      <% else %>
-        <%= t("cards.display.no_due_date") %>
-      <% end %>
-    </span>
+  <button class="card__due-trigger <%= 'card__meta-text--overdue' if card.overdue? %>" data-action="click->dialog#open:stop keydown.d@document->hotkey#click" data-controller="tooltip hotkey" tabindex=<%= (local_assigns.key?(:preview) && local_assigns[:preview]) ? -1 : 0 %>>
+    <%= icon_tag "refresh--meta" %>
+    <% if card.due_on.present? %>
+      <%= t("cards.display.due") %>
+      <strong><%= l(card.due_on, format: :short) %></strong>
+    <% else %>
+      <%= t("cards.display.no_due_date") %>
+    <% end %>
   </button>
 
   <dialog class="popup panel flex-column align-start gap-half fill-white shadow" data-dialog-target="dialog" data-action="turbo:before-morph-attribute->dialog#preventCloseOnMorphing turbo:submit-end->dialog#close">
     <%= yield %>
   </dialog>
-</div>
+</span>
