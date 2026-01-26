@@ -29,3 +29,8 @@
 
 en:
   hello: "Hello world"
+  cards:
+    display:
+      due: "Due"
+    edit:
+      due_date_label: "Due date"

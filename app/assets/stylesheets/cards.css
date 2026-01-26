@@ -284,6 +284,17 @@
   .card__meta-text--author { grid-area: text-author; }
   .card__meta-text--updated { grid-area: text-updated; }
   .card__meta-text--assignees { grid-area: text-assignees; }
+  .card__meta-text--due { grid-area: text-due; }
+
+  .card__meta-text--overdue,
+  .card__meta-text--overdue strong {
+    color: oklch(var(--lch-red-dark));
+  }
+
+  .card__due-date-field {
+    margin-block-start: var(--block-space);
+    padding-inline: var(--main-padding);
+  }
 
   .card__meta-avatars {
     align-self: center;

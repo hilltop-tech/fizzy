@@ -65,6 +65,14 @@ class Card < ApplicationRecord
     title.present? || description.present?
   end
 
+  def overdue?
+    due_on.present? && due_on < Date.current && !closed?
+  end
+
+  def due_soon?(days: 3)
+    due_on.present? && due_on <= Date.current + days && due_on >= Date.current && !closed?
+  end
+
   private
     STORAGE_BATCH_SIZE = 1000
 

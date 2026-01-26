@@ -25,5 +25,11 @@
           data: { action: "lexxy:change->auto-save#change focusout->auto-save#submit" } do %>
       <%= general_prompts(card.board) %>
     <% end %>
+
+    <div class="card__due-date-field flex align-center gap">
+      <%= form.label :due_on, t("cards.edit.due_date_label"), class: "txt-small txt-uppercase" %>
+      <%= form.date_field :due_on, class: "input input--small",
+            data: { action: "change->auto-save#change blur->auto-save#submit" } %>
+    </div>
   <% end %>
 <% end %>

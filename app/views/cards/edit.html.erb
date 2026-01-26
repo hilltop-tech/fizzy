@@ -22,6 +22,12 @@
       <%= general_prompts(@card.board) %>
     <% end %>
 
+    <div class="card__due-date-field flex align-center gap">
+      <%= form.label :due_on, t("cards.edit.due_date_label"), class: "txt-small txt-uppercase" %>
+      <%= form.date_field :due_on, class: "input input--small",
+            data: { action: "change->form#submit" } %>
+    </div>
+
     <%= link_to t("cards.edit.close_and_discard"), @card,
           data: { form_target: "cancel", bridge__form_target: "cancel", bridge_title: "Cancel" }, hidden: true %>
   <% end %>

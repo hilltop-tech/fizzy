@@ -140,6 +140,7 @@ ja:
       button: "編集"
       close_and_discard: "エディターを閉じて変更を破棄"
       save_button_title: "変更を保存 (%{hotkey})"
+      due_date_label: "期限日"
     container:
       create_card: "カードを作成"
       create_card_title: "カードを作成 (%{hotkey})"
@@ -163,6 +164,7 @@ ja:
       not_now: "Not Now"
       done: "Done"
       last_updated: "最終更新"
+      due: "期限"
     assignees:
       assign: "割り当て"
       assign_to_me: "自分に割り当て"

@@ -23,6 +23,14 @@
     <%= card.assignees.map { |assignee| "<strong>#{h assignee.familiar_name}</strong>" }.to_sentence.html_safe %>
   </span>
 
+  <% if card.due_on.present? %>
+    <span class="card__meta-text card__meta-text--due <%= 'card__meta-text--overdue' if card.overdue? %>">
+      <%= icon_tag "refresh--meta" %>
+      <%= t("cards.display.due") %>
+      <strong><%= l(card.due_on, format: :short) %></strong>
+    </span>
+  <% end %>
+
   <div class="card__meta-avatars card__meta-avatars--assignees">
     <%= yield %>
   </div>
