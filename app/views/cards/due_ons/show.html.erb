@@ -1,0 +1,22 @@
+<%= turbo_frame_tag @card, :due_on do %>
+  <%= tag.div class: "max-width full-width", data: {
+        action: "turbo:before-cache@document->dialog#close" } do %>
+
+    <div class="flex align-start justify-space-between">
+      <strong class="popup__title"><%= t("cards.due_on.title") %></strong>
+      <kbd class="txt-xx-small hide-on-touch">d</kbd>
+    </div>
+
+    <%= form_with url: card_due_on_path(@card), method: :patch, class: "margin-block-half", data: { turbo_frame: "_top" } do |form| %>
+      <%= form.date_field :due_on, value: @card.due_on, class: "input txt-small full-width", autofocus: true %>
+
+      <div class="flex gap-half margin-block-half">
+        <%= form.submit t("cards.due_on.save"), class: "btn btn--small btn--reversed flex-item-grow" %>
+      </div>
+    <% end %>
+
+    <% if @card.due_on.present? %>
+      <%= button_to t("cards.due_on.clear"), card_due_on_path(@card), method: :delete, class: "btn btn--small btn--text full-width", data: { turbo_frame: "_top" } %>
+    <% end %>
+  <% end %>
+<% end %>

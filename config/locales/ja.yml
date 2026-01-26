@@ -165,6 +165,11 @@ ja:
       done: "Done"
       last_updated: "最終更新"
       due: "期限"
+      no_due_date: "期限なし"
+    due_on:
+      title: "期限を設定"
+      save: "保存"
+      clear: "クリア"
     assignees:
       assign: "割り当て"
       assign_to_me: "自分に割り当て"

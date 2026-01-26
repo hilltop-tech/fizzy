@@ -266,7 +266,7 @@
     font-weight: 500;
     grid-template-areas:
       "avatars-author text-added text-updated avatars-assignees"
-      "avatars-author text-author text-assignees avatars-assignees";
+      "avatars-author text-author text-due avatars-assignees";
     grid-template-columns: auto auto 1fr auto;
     inline-size: fit-content;
     text-transform: uppercase;
@@ -291,9 +291,26 @@
     color: oklch(var(--lch-red-dark));
   }
 
-  .card__due-date-field {
-    margin-block-start: var(--block-space);
-    padding-inline: var(--main-padding);
+  .card__meta-due-editor {
+    display: contents;
+  }
+
+  .card__due-trigger {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: start;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus-ring-color);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
   }
 
   .card__meta-avatars {

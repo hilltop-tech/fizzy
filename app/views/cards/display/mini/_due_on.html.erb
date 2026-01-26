@@ -1,0 +1,7 @@
+<% if card.due_on.present? %>
+  <span class="card__meta-text--due-simple <%= 'card__meta-text--overdue' if card.overdue? %>">
+    <%= icon_tag "refresh--meta" %>
+    <%= t("cards.display.due") %>
+    <strong><%= l(card.due_on, format: :short) %></strong>
+  </span>
+<% end %>

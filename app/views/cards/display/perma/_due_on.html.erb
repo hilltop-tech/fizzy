@@ -1,0 +1,3 @@
+<%= render "cards/display/common/due_on", card: card do %>
+  <%= turbo_frame_tag card, :due_on, src: card_due_on_path(card), loading: :lazy, refresh: "morph" %>
+<% end %>

@@ -16,10 +16,15 @@
     <%= local_datetime_tag(card.last_active_at, style: :daysago) %>
   </span>
 
-  <span class="card__meta-text card__meta-text--assignees overflow-ellipsis">
-    <%= icon_tag("arrow-right", aria: { label: t("cards.display.assigned_to") }) if card.assignees.any? %>
-    <%= card.assignees.map { |assignee| h assignee.familiar_name }.to_sentence(two_words_connector: " / ", last_word_connector: " / ").html_safe %>
-  </span>
+  <div class="card__meta-text card__meta-text--due">
+    <% if card.due_on.present? %>
+      <span class="<%= 'card__meta-text--overdue' if card.overdue? %>">
+        <%= icon_tag "refresh--meta" %>
+        <%= t("cards.display.due") %>
+        <strong><%= l(card.due_on, format: :short) %></strong>
+      </span>
+    <% end %>
+  </div>
 
   <div class="card__meta-avatars card__meta-avatars--assignees">
     <%= render "cards/display/preview/assignees", card: card %>

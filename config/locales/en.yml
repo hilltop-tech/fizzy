@@ -32,5 +32,10 @@ en:
   cards:
     display:
       due: "Due"
+      no_due_date: "No due date"
+    due_on:
+      title: "Set due date"
+      save: "Save"
+      clear: "Clear"
     edit:
       due_date_label: "Due date"

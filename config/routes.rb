@@ -76,6 +76,7 @@ Rails.application.routes.draw do
       resource :board
       resource :closure
       resource :column
+      resource :due_on
       resource :goldness
       resource :image
       resource :not_now

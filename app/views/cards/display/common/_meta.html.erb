@@ -17,22 +17,12 @@
     <%= local_datetime_tag(card.last_active_at, style: :daysago) %>
   </span>
 
-  <span class="card__meta-text card__meta-text--assignees overflow-ellipsis">
-    <%= icon_tag "arrow-right" if card.assignees.any? %>
-    <%= card.assignees.any? ? t("cards.display.assigned_to") : t("cards.display.not_assigned") %>
-    <%= card.assignees.map { |assignee| "<strong>#{h assignee.familiar_name}</strong>" }.to_sentence.html_safe %>
-  </span>
-
-  <% if card.due_on.present? %>
-    <span class="card__meta-text card__meta-text--due <%= 'card__meta-text--overdue' if card.overdue? %>">
-      <%= icon_tag "refresh--meta" %>
-      <%= t("cards.display.due") %>
-      <strong><%= l(card.due_on, format: :short) %></strong>
-    </span>
-  <% end %>
+  <div class="card__meta-text card__meta-text--due">
+    <%= local_assigns[:due_on_content] %>
+  </div>
 
   <div class="card__meta-avatars card__meta-avatars--assignees">
-    <%= yield %>
+    <%= local_assigns[:assignees_content] %>
   </div>
 </div>
 
