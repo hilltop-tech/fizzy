@@ -8,12 +8,10 @@ class Search::Record < ApplicationRecord
 
   class << self
     def upsert!(attributes)
-      record = find_by(searchable_type: attributes[:searchable_type], searchable_id: attributes[:searchable_id])
-      if record
+      create!(attributes)
+    rescue ActiveRecord::RecordNotUnique
+      find_by!(searchable_type: attributes[:searchable_type], searchable_id: attributes[:searchable_id]).tap do |record|
         record.update!(attributes)
-        record
-      else
-        create!(attributes)
       end
     end
 

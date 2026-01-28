@@ -8,8 +8,13 @@ module Search::Record::Trilogy
     before_save :set_account_key, :stem_content
 
     scope :matching, ->(query, account_id) do
-      full_query = "+account#{account_id} +(#{Search::Stemmer.stem(query)})"
-      where("MATCH(#{table_name}.account_key, #{table_name}.content, #{table_name}.title) AGAINST(? IN BOOLEAN MODE)", full_query)
+      stemmed = Search::Stemmer.stem(query)
+      if stemmed.present?
+        full_query = "+account#{account_id} +(#{stemmed})"
+        where("MATCH(#{table_name}.account_key, #{table_name}.content, #{table_name}.title) AGAINST(? IN BOOLEAN MODE)", full_query)
+      else
+        none
+      end
     end
 
     SHARD_CLASSES = SHARD_COUNT.times.map do |shard_id|
